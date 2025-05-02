@@ -1,0 +1,32 @@
+@charset "utf-8";
+.footer {
+  height: 175px;
+  display: table;
+  width: 100%; }
+  .footer .custom {
+    display: table-cell;
+    vertical-align: middle; }
+  .footer p {
+    margin: 0 1vw;
+    display: inline-block;
+    font-size: 12px; }
+
+.backtop {
+  position: fixed;
+  right: 5vw;
+  bottom: -60px;
+  transition: 0.5s;
+  z-index: 1499; }
+  .backtop i {
+    cursor: pointer;
+    width: 50px;
+    background: #000;
+    line-height: 50px;
+    color: #fff;
+    transition: 0.3s;
+    border-radius: 100px; }
+    .backtop i:hover {
+      transform: translateY(-3px); }
+
+.scroll .backtop {
+  bottom: 7vh; }
