@@ -1,0 +1,12 @@
+// Main SCSS file that uses all partials
+
+// Use FontAwesome
+@use 'fontawesome';
+
+// Use component styles
+@use 'stars';
+@use 'sol';
+@use 'header';
+@use 'footer';
+@use 'parallax';
+@use 'template';

@@ -1,0 +1,1320 @@
+@charset "utf-8";
+body {
+  height: calc(100vh + 200px);
+  margin: 0; }
+  body::-webkit-scrollbar {
+    display: none; }
+
+@-webkit-keyframes full-rotate {
+  from {
+    -webkit-transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(360deg); } }
+
+@-webkit-keyframes full-rotate-inv {
+  from {
+    -webkit-transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(-360deg); } }
+
+@-webkit-keyframes planet-elip-1 {
+  0% {
+    -webkit-transform: translateY(0); }
+
+  50% {
+    -webkit-transform: translateY(1.5vh); }
+
+  100% {
+    -webkit-transform: translateY(0); } }
+
+@-webkit-keyframes planet-elip-4 {
+  0% {
+    -webkit-transform: translateY(0); }
+
+  50% {
+    -webkit-transform: translateY(-1vh); }
+
+  100% {
+    -webkit-transform: translateY(0); } }
+
+.sol {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: #000; }
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10vh;
+  height: 10vh;
+  background: yellow;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  transition: 2s; }
+  .sun:hover {
+    transform: translate(-50%, -50%) scale(1.5); }
+  .sun .corona {
+    width: 10vh;
+    height: 11vh;
+    background: rgba(255, 255, 0, 0.3);
+    border-radius: 100%;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-animation-name: full-rotate-inv;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-transition-duration: 2s;
+    -webkit-animation-duration: 2s;
+    position: absolute;
+    margin-top: -0.5vh; }
+    .sun .corona.two {
+      -webkit-animation-delay: 0.5s; }
+    .sun .corona.three {
+      -webkit-animation-delay: 1s; }
+
+.orbit {
+  position: absolute;
+  border: 1px solid;
+  border-radius: 100%;
+  transition: 2s; }
+  .orbit .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-animation-name: full-rotate-inv;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear; }
+
+.elip {
+  -webkit-transition-property: -webkit-transform;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out; }
+
+.planet {
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  transition: 2s; }
+  .planet::after {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 25%;
+    width: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2) !important;
+    top: 37.5%;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-animation-name: full-rotate-inv;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear; }
+
+.orbit.one {
+  transform: rotate(45deg);
+  left: calc(50vw - 11vh);
+  top: calc(50vh - 11vh);
+  width: 22vh;
+  height: 22vh;
+  border-color: darkorange;
+  z-index: 100; }
+  .orbit.one .center {
+    -webkit-transition-duration: 1s;
+    -webkit-animation-duration: 1s; }
+  .orbit.one .planet {
+    width: 10px;
+    height: 10px;
+    top: 11vh;
+    background-color: darkorange; }
+    .orbit.one .planet::after {
+      -webkit-transition-duration: 2s;
+      -webkit-animation-duration: 2s;
+      background: darkorange; }
+
+.orbit.two {
+  transform: rotate(0deg);
+  left: calc(50vw - 20vh);
+  top: calc(50vh - 20vh);
+  width: 40vh;
+  height: 40vh;
+  border-color: white;
+  z-index: 99; }
+  .orbit.two .center {
+    -webkit-transition-duration: 6s;
+    -webkit-animation-duration: 6s; }
+  .orbit.two .planet {
+    width: 25px;
+    height: 25px;
+    top: 20vh;
+    background-color: white; }
+    .orbit.two .planet::after {
+      -webkit-transition-duration: 3s;
+      -webkit-animation-duration: 3s;
+      -webkit-animation-name: full-rotate;
+      background: white; }
+
+.orbit.three {
+  transform: rotate(0deg);
+  left: calc(50vw - 28.75vh);
+  top: calc(50vh - 28.75vh);
+  width: 57.5vh;
+  height: 57.5vh;
+  border-color: darkcyan;
+  z-index: 98; }
+  .orbit.three .center {
+    -webkit-transition-duration: 10s;
+    -webkit-animation-duration: 10s; }
+  .orbit.three .planet {
+    width: 30px;
+    height: 30px;
+    top: 28.75vh;
+    background-color: darkcyan; }
+    .orbit.three .planet::after {
+      -webkit-transition-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      background: darkcyan; }
+
+.orbit.four {
+  transform: rotate(45deg);
+  left: calc(50vw - 37.5vh);
+  top: calc(50vh - 37.5vh);
+  width: 75vh;
+  height: 75vh;
+  border-color: red;
+  z-index: 97; }
+  .orbit.four .center {
+    -webkit-transition-duration: 19s;
+    -webkit-animation-duration: 19s; }
+  .orbit.four .planet {
+    width: 16px;
+    height: 16px;
+    top: 37.5vh;
+    background-color: red; }
+    .orbit.four .planet::after {
+      -webkit-transition-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      background: red; }
+
+.orbit.five {
+  transform: rotate(45deg);
+  left: calc(50vw - 17.5vh);
+  top: calc(50vh - 17.5vh);
+  width: 35vh;
+  height: 35vh;
+  border-color: lightcoral;
+  z-index: 95; }
+  .orbit.five .center {
+    -webkit-transition-duration: 12s;
+    -webkit-animation-duration: 12s; }
+  .orbit.five .planet {
+    width: 60px;
+    height: 60px;
+    top: 17.5vh;
+    background-color: lightcoral;
+    max-width: 10vh;
+    max-height: 10vh; }
+    .orbit.five .planet::after {
+      -webkit-transition-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      background: red; }
+
+.orbit.six {
+  transform: rotate(55deg);
+  left: calc(50vw - 27.5vh);
+  top: calc(50vh - 27.5vh);
+  width: 55vh;
+  height: 55vh;
+  border-color: lightgoldenrodyellow;
+  z-index: 94; }
+  .orbit.six .center {
+    -webkit-transition-duration: 29s;
+    -webkit-animation-duration: 29s; }
+  .orbit.six .planet {
+    width: 48px;
+    height: 48px;
+    top: 27.5vh;
+    background-color: lightgoldenrodyellow;
+    max-width: 8vh;
+    max-height: 8vh; }
+    .orbit.six .planet::after {
+      -webkit-transition-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      background: red; }
+
+.orbit.seven {
+  transform: rotate(45deg);
+  left: calc(50vw - 37.5vh);
+  top: calc(50vh - 37.5vh);
+  width: 75vh;
+  height: 75vh;
+  border-color: lightblue;
+  z-index: 93; }
+  .orbit.seven .center {
+    -webkit-transition-duration: 84s;
+    -webkit-animation-duration: 84s; }
+  .orbit.seven .planet {
+    width: 22px;
+    height: 22px;
+    top: 37.5vh;
+    background-color: lightblue;
+    max-width: 3.7vh;
+    max-height: 3.7vh; }
+    .orbit.seven .planet::after {
+      -webkit-transition-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      background: red; }
+
+.orbit.eight {
+  transform: rotate(165deg);
+  left: calc(50vw - 47.5vh);
+  top: calc(50vh - 47.5vh);
+  width: 95vh;
+  height: 95vh;
+  border-color: cornflowerblue;
+  z-index: 92; }
+  .orbit.eight .center {
+    -webkit-transition-duration: 165s;
+    -webkit-animation-duration: 165s; }
+  .orbit.eight .planet {
+    width: 21px;
+    height: 21px;
+    top: 47.5vh;
+    background-color: cornflowerblue;
+    max-width: 3.5vh;
+    max-height: 3.5vh; }
+    .orbit.eight .planet::after {
+      -webkit-transition-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      background: red; }
+
+.orbit.belt {
+  transform: rotate(0deg);
+  left: calc(50vw - 50vh);
+  top: calc(50vh - 50vh);
+  width: 100vh;
+  height: 100vh;
+  border-width: 0;
+  z-index: 96; }
+  .orbit.belt .cloud {
+    border: 3vh solid rgba(128, 128, 128, 0.06);
+    height: calc(97% - 6vh);
+    width: calc(100% - 6vh);
+    top: 2.5%;
+    position: absolute;
+    border-radius: 100%;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-animation-name: full-rotate-inv;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-transition-duration: 5s;
+    -webkit-animation-duration: 5s;
+    transition: 2s; }
+    .orbit.belt .cloud.one {
+      border: 2vh solid rgba(128, 128, 128, 0.06);
+      height: calc(97% - 4vh);
+      width: calc(100% - 4vh); }
+    .orbit.belt .cloud.two {
+      -webkit-animation-delay: 1s; }
+    .orbit.belt .cloud.three {
+      -webkit-animation-delay: 2s; }
+
+.planet-0-hover .sun, .planet-1-hover .sun, .planet-2-hover .sun, .planet-3-hover .sun, .planet-4-hover .sun, .planet-5-hover .sun, .planet-6-hover .sun, .planet-7-hover .sun, .planet-8-hover .sun, .planet-9-hover .sun {
+  opacity: 0.5; }
+  .planet-0-hover .orbit, .planet-1-hover .orbit, .planet-2-hover .orbit, .planet-3-hover .orbit, .planet-4-hover .orbit, .planet-5-hover .orbit, .planet-6-hover .orbit, .planet-7-hover .orbit, .planet-8-hover .orbit, .planet-9-hover .orbit {
+    opacity: 0.5; }
+
+.planet-0-hover .sun, .planet-1-hover .orbit.one, .planet-2-hover .orbit.two, .planet-3-hover .orbit.three, .planet-4-hover .orbit.four, .planet-5-hover .orbit.belt, .planet-6-hover .orbit.five, .planet-7-hover .orbit.six, .planet-8-hover .orbit.seven, .planet-9-hover .orbit.eight {
+  opacity: 1; }
+
+.name-hold {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(50vw - 45vh);
+  height: 100vh; }
+  .name-hold > div > div {
+    height: 100vh;
+    transition: 0.3s;
+    position: absolute;
+    width: calc(50vw - 45vh); }
+  .name-hold .name {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 5vh;
+    font-weight: 600;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    text-align: center;
+    width: 100%;
+    position: relative; }
+    .name-hold .name p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      transition: 0.3s; }
+      @media (max-width: 999px) {
+  .name-hold .name p {
+    top: calc(50% - 75px); } }
+  .name-hold .name-hold-moons .name {
+    font-size: 4vh;
+    text-transform: unset; }
+    @media (max-width: 999px) {
+.planet-inspect .name-hold .name p {
+top: 50%; } }
+
+.moon-hover .name-hold-inner > div, .moon-hover .name-hold-outer > div, .moon-hover .name-hold-objects > div {
+  height: 150vh;
+  transform: scale(0); }
+
+.planet-0-hover .name.zero, .planet-0-click .sol .name.zero, .planet-1-hover .name.one, .planet-1-click .sol .name.one, .planet-2-hover .name.two, .planet-2-click .sol .name.two, .planet-3-hover .name.three, .planet-3-click .sol .name.three, .planet-4-hover .name.four, .planet-4-click .sol .name.four, .planet-5-hover .name.five, .planet-5-click .sol .name.five, .planet-6-hover .name.six, .planet-6-click .sol .name.six, .planet-7-hover .name.seven, .planet-7-click .sol .name.seven, .planet-8-hover .name.eight, .planet-8-click .sol .name.eight, .planet-9-hover .name.nine, .planet-9-click .sol .name.nine, .moon-1-hover .sol .name.m-one, .moon-2-hover .sol .name.m-two, .moon-3-hover .sol .name.m-three, .moon-4-hover .sol .name.m-four, .moon-5-hover .sol .name.m-five, .moon-6-hover .sol .name.m-six, .moon-7-hover .sol .name.m-seven, .moon-8-hover .sol .name.m-eight {
+  height: 100%; }
+
+.name-hold-moons > div {
+  position: absolute;
+  top: 0;
+  width: calc(50vw - 45vh); }
+
+.info-hold {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  text-align: left;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  width: calc(50vw - 45vh);
+  font-size: 2.5vh; }
+  .info-hold .info {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: calc(50vw - 45vh - 4vw);
+    opacity: 0;
+    padding: 0 2vw;
+    transition: 0.5s; }
+    .info-hold .info h1 {
+      font-size: 2.5vh;
+      margin: 4vh 0 0 0; }
+    .info-hold .info h1:first-child {
+      margin: 0; }
+    .info-hold .info p {
+      font-size: 2vh;
+      padding: 0 1vw; }
+    .info-hold .info p:last-child {
+      margin-bottom: 0; }
+
+.planet-0-click .sol .info.zero, .planet-1-click .sol .info.one, .planet-2-click .sol .info.two, .planet-3-click .sol .info.three, .planet-4-click .sol .info.four, .planet-5-click .sol .info.five, .planet-6-click .sol .info.six, .planet-7-click .sol .info.seven, .planet-8-click .sol .info.eight, .planet-9-click .sol .info.nine {
+  opacity: 1; }
+
+.buttons {
+  position: absolute;
+  bottom: 2vh;
+  left: 2vh;
+  z-index: 200; }
+  .buttons i {
+    background: rgba(255, 255, 255, 0.4);
+    color: #000;
+    height: 5vh;
+    width: 5vh;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 5vh;
+    margin: 0 0.5vh;
+    font-size: 2vh;
+    transition: 0.3s;
+    cursor: pointer; }
+    .buttons i:hover {
+      background: rgba(255, 255, 255, 1); }
+  .buttons .fa-search-plus {
+    display: none; }
+
+.about {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition-delay: 0.3s;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2.5vh; }
+  .about .inner {
+    height: 100%;
+    top: 0;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0);
+    z-index: 1000;
+    transition: 0.3s; }
+    .about .inner .center {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      text-align: center;
+      width: 90vw;
+      padding: 0 5vw; }
+  .about i {
+    width: 5vh;
+    height: 5vh;
+    line-height: calc(5vh - -1px);
+    border-radius: 5vh;
+    margin-top: 5vh;
+    border: 1px solid;
+    transition: 0.3s; }
+    .about i:hover {
+      color: #fff;
+      background: #000; }
+  .about a {
+    text-decoration: none;
+    color: inherit; }
+  .about p {
+    margin: 5vh 0; }
+
+.about-open .about {
+  height: 100%;
+  transition-delay: 0s; }
+  .about-open .about .inner {
+    background: rgba(255, 255, 255, 0.85); }
+
+.nav {
+  position: absolute;
+  left: 2vh;
+  bottom: 2vh;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 10px 0;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 10px;
+  text-align: center;
+  width: 150px;
+  z-index: 2000;
+  transition: 0.3s; }
+  .nav .nav_directs {
+    display: inline-block;
+    width: 100%;
+    transition: 0.3s; }
+  .nav .nav_directs .nav_direct {
+    line-height: 40px;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 0 10px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+    cursor: pointer; }
+  .nav .nav_directs .nav_direct:hover {
+    background: rgba(255, 255, 255, 0.2); }
+  .nav .nav_steps {
+    transition: 0.3s; }
+  .nav .nav_steps .nav_step {
+    line-height: 40px;
+    width: calc(50% - 5px);
+    border-radius: 10px;
+    margin: 0 0 10px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+    cursor: pointer;
+    float: left; }
+  .nav .nav_steps .nav_step.nav_out {
+    margin-right: 10px; }
+  .nav .nav_steps .nav_step:hover {
+    background: rgba(255, 255, 255, 0.2); }
+  .nav .nav_steps > div {
+    display: none; }
+  .nav .nav_selects {
+    position: absolute;
+    width: calc(55% - 15px);
+    height: calc(100% - 20px);
+    opacity: 0;
+    z-index: -1;
+    transition: 0.3s; }
+  .nav .nav_selects .nav_select {
+    height: calc(50% - 5px);
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+    opacity: 0.7;
+    transition: 0.3s;
+    cursor: pointer; }
+  .nav .nav_selects .nav_select:hover {
+    opacity: 1; }
+  .nav .nav_selects .nav_select i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    font-size: 25px; }
+  .nav .nav_inspect {
+    background: rgba(34, 139, 34, 0.35);
+    margin-right: 10px;
+    display: none; }
+  .nav .nav_inspect.nav_inspect_placehold {
+    opacity: 0.1 !important;
+    display: block; }
+  .nav .nav_deselect {
+    background: rgba(193, 14, 14, 0.4);
+    margin-top: 10px; }
+  .nav .nav_arrows {
+    right: 10px;
+    position: absolute;
+    width: calc(45% - 15px);
+    height: calc(100% - 20px);
+    opacity: 0;
+    z-index: -1;
+    transition: 0.3s; }
+  .nav .nav_arrows .nav_arrow_ctrl {
+    display: none;
+    height: 100%; }
+  .nav .nav_arrows .nav_arrow {
+    height: calc(50% - 5px);
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+    opacity: 0.7;
+    transition: 0.3s;
+    display: block;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+    cursor: pointer; }
+  .nav .nav_arrows .nav_arrow:hover {
+    background: rgba(255, 255, 255, 0.2); }
+  .nav .nav_arrows .nav_arrow.nav_arrow_prev {
+    margin-bottom: 10px; }
+  .nav .nav_arrows .nav_arrow i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px; }
+
+.zoom_inner .nav_steps .nav_steps_1 {
+  display: block; }
+
+.zoom_outer .nav_steps .nav_steps_2 {
+  display: block; }
+
+.zoom_farout .nav_steps .nav_steps_3 {
+  display: block; }
+
+.planet-inspect .nav {
+  bottom: -30px !important;
+  height: 80px;
+  width: 120px; }
+  .planet-inspect .nav .nav_selects {
+    z-index: 2; }
+  .planet-inspect .nav .nav_selects .nav_select {
+    opacity: 0;
+    height: 0; }
+  .planet-inspect .nav .nav_selects .nav_deselect {
+    margin: 0;
+    height: 100%;
+    opacity: 1; }
+  .planet-inspect .nav .nav_arrows {
+    opacity: 0.1;
+    z-index: -1; }
+
+.inner_planets, .outer_planets {
+  transition: 2s;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  left: 0;
+  width: 100%; }
+
+.zoom_inner .background {
+  transform: scale(1.2); }
+  .zoom_inner .inner_planets {
+    transform: scale(1);
+    z-index: 1; }
+  .zoom_inner .outer_planets {
+    transform: scale(8); }
+  .zoom_inner .nav .nav_direct_inner, .zoom_inner .nav .nav_in {
+    opacity: 0.2; }
+
+.zoom_outer .background {
+  transform: scale(1); }
+  .zoom_outer .sun {
+    width: 8vh;
+    height: 8vh; }
+  .zoom_outer .sun .corona {
+    width: 8vh;
+    height: 9vh; }
+  .zoom_outer .outer_planets {
+    transform: scale(1);
+    z-index: 1; }
+  .zoom_outer .nav .nav_direct_outer {
+    opacity: 0.2; }
+
+.planet-inspect .background {
+  transform: scale(1.5) !important; }
+
+.zoom_outer .orbit.one, .zoom_farout .orbit.one {
+  width: 12vh;
+  height: 12vh;
+  left: calc(50vw - 6vh);
+  top: calc(50vh - 6vh);
+  opacity: 0.5; }
+  .zoom_outer .orbit.one .planet, .zoom_farout .orbit.one .planet {
+    top: 6vh;
+    width: 5px !important;
+    height: 5px !important; }
+  .zoom_outer .orbit.one .elip, .zoom_farout .orbit.one .elip {
+    -webkit-animation-iteration-count: unset; }
+  .zoom_outer .orbit.one .center, .zoom_farout .orbit.one .center {
+    -webkit-animation-duration: 0.2s; }
+  .zoom_outer .orbit.two, .zoom_farout .orbit.two {
+    width: 14vh;
+    height: 14vh;
+    left: calc(50vw - 7vh);
+    top: calc(50vh - 7vh);
+    opacity: 0.5; }
+  .zoom_outer .orbit.two .planet, .zoom_farout .orbit.two .planet {
+    top: 7vh;
+    width: 5px !important;
+    height: 5px !important; }
+  .zoom_outer .orbit.two .elip, .zoom_farout .orbit.two .elip {
+    -webkit-animation-iteration-count: unset; }
+  .zoom_outer .orbit.two .center, .zoom_farout .orbit.two .center {
+    -webkit-animation-duration: 0.6s; }
+  .zoom_outer .orbit.three, .zoom_farout .orbit.three {
+    width: 16vh;
+    height: 16vh;
+    left: calc(50vw - 8vh);
+    top: calc(50vh - 8vh);
+    opacity: 0.5; }
+  .zoom_outer .orbit.three .planet, .zoom_farout .orbit.three .planet {
+    top: 8vh;
+    width: 5px !important;
+    height: 5px !important; }
+  .zoom_outer .orbit.three .elip, .zoom_farout .orbit.three .elip {
+    -webkit-animation-iteration-count: unset; }
+  .zoom_outer .orbit.three .center, .zoom_farout .orbit.three .center {
+    -webkit-animation-duration: 1s; }
+  .zoom_outer .orbit.four, .zoom_farout .orbit.four {
+    width: 18vh;
+    height: 18vh;
+    left: calc(50vw - 9vh);
+    top: calc(50vh - 9vh);
+    opacity: 0.5; }
+  .zoom_outer .orbit.four .planet, .zoom_farout .orbit.four .planet {
+    top: 9vh;
+    width: 5px !important;
+    height: 5px !important; }
+  .zoom_outer .orbit.four .elip, .zoom_farout .orbit.four .elip {
+    -webkit-animation-iteration-count: unset; }
+  .zoom_outer .orbit.four .center, .zoom_farout .orbit.four .center {
+    -webkit-animation-duration: 1.9s; }
+  .zoom_outer .orbit.belt, .zoom_farout .orbit.belt {
+    left: calc(50vw - 11vh);
+    top: calc(50vh - 11vh);
+    width: 22vh;
+    height: 22vh;
+    opacity: 1; }
+  .zoom_outer .orbit.belt .cloud, .zoom_farout .orbit.belt .cloud {
+    height: calc(97% - 2vh) !important;
+    width: calc(100% - 2vh) !important;
+    border: 1vh solid rgba(128, 128, 128, 0.05); }
+
+.zoom_farout .sun {
+  transform: translate(-50%, -50%) scale(0.2); }
+  .zoom_farout .outer_planets, .zoom_farout .inner_planets {
+    transform: scale(0); }
+  .zoom_farout .nav .nav_out {
+    opacity: 0.2; }
+
+.planet-1-click #inner_planets > .orbit, .planet-2-click #inner_planets > .orbit, .planet-3-click #inner_planets > .orbit, .planet-4-click #inner_planets > .orbit, .planet-5-click #inner_planets > .orbit, .planet-6-click #inner_planets > .orbit, .planet-7-click #inner_planets > .orbit, .planet-8-click #inner_planets > .orbit, .planet-9-click #inner_planets > .orbit, .planet-1-click #outer_planets > .orbit, .planet-2-click #outer_planets > .orbit, .planet-3-click #outer_planets > .orbit, .planet-4-click #outer_planets > .orbit, .planet-5-click #outer_planets > .orbit, .planet-6-click #outer_planets > .orbit, .planet-7-click #outer_planets > .orbit, .planet-8-click #outer_planets > .orbit, .planet-9-click #outer_planets > .orbit, .planet-1-click .sun, .planet-2-click .sun, .planet-3-click .sun, .planet-4-click .sun, .planet-5-click .sun, .planet-6-click .sun, .planet-7-click .sun, .planet-8-click .sun, .planet-9-click .sun {
+  opacity: 0; }
+  .planet-1-click .sol .name, .planet-2-click .sol .name, .planet-3-click .sol .name, .planet-4-click .sol .name, .planet-5-click .sol .name, .planet-6-click .sol .name, .planet-7-click .sol .name, .planet-8-click .sol .name, .planet-9-click .sol .name {
+    height: 0; }
+  .planet-1-click .sol .info, .planet-2-click .sol .info, .planet-3-click .sol .info, .planet-4-click .sol .info, .planet-5-click .sol .info, .planet-6-click .sol .info, .planet-7-click .sol .info, .planet-8-click .sol .info, .planet-9-click .sol .info {
+    opacity: 0; }
+  .planet-1-click .nav_directs, .planet-2-click .nav_directs, .planet-3-click .nav_directs, .planet-4-click .nav_directs, .planet-5-click .nav_directs, .planet-6-click .nav_directs, .planet-7-click .nav_directs, .planet-8-click .nav_directs, .planet-9-click .nav_directs, .planet-1-click .nav_steps, .planet-2-click .nav_steps, .planet-3-click .nav_steps, .planet-4-click .nav_steps, .planet-5-click .nav_steps, .planet-6-click .nav_steps, .planet-7-click .nav_steps, .planet-8-click .nav_steps, .planet-9-click .nav_steps {
+    opacity: 0; }
+  .planet-1-click .nav_selects, .planet-2-click .nav_selects, .planet-3-click .nav_selects, .planet-4-click .nav_selects, .planet-5-click .nav_selects, .planet-6-click .nav_selects, .planet-7-click .nav_selects, .planet-8-click .nav_selects, .planet-9-click .nav_selects, .planet-1-click .nav_arrows, .planet-2-click .nav_arrows, .planet-3-click .nav_arrows, .planet-4-click .nav_arrows, .planet-5-click .nav_arrows, .planet-6-click .nav_arrows, .planet-7-click .nav_arrows, .planet-8-click .nav_arrows, .planet-9-click .nav_arrows {
+    opacity: 1;
+    z-index: 1; }
+  .planet-1-click .nav, .planet-2-click .nav, .planet-3-click .nav, .planet-4-click .nav, .planet-5-click .nav, .planet-6-click .nav, .planet-7-click .nav, .planet-8-click .nav, .planet-9-click .nav {
+    transform: rotate(90deg);
+    bottom: calc(2vh + 10px); }
+  .planet-1-click .nav .nav_arrow_orbit1, .planet-2-click .nav .nav_arrow_orbit2, .planet-3-click .nav .nav_arrow_orbit3, .planet-4-click .nav .nav_arrow_orbit4, .planet-5-click .nav .nav_arrow_orbit5, .planet-6-click .nav .nav_arrow_orbit6, .planet-7-click .nav .nav_arrow_orbit7, .planet-8-click .nav .nav_arrow_orbit8, .planet-9-click .nav .nav_arrow_orbit9 {
+    display: block; }
+
+.planet-1-click .nav .nav_arrows .nav_arrow_prev, .planet-9-click .nav .nav_arrows .nav_arrow_next {
+  opacity: 0.1 !important;
+  background: rgba(255, 255, 255, 0.1) !important; }
+
+.planet-1-click .orbit.one, .planet-2-click .orbit.two, .planet-3-click .orbit.three, .planet-4-click .orbit.four, .planet-5-click .orbit.belt, .planet-6-click .orbit.five, .planet-7-click .orbit.six, .planet-8-click .orbit.seven, .planet-9-click .orbit.eight {
+  opacity: 1 !important; }
+
+.planet-1-click .nav .nav_inspect.nav_inspect_placehold, .planet-2-click .nav .nav_inspect.nav_inspect_placehold, .planet-3-click .nav .nav_inspect.nav_inspect_placehold, .planet-4-click .nav .nav_inspect.nav_inspect_placehold, .planet-5-click .nav .nav_inspect.nav_inspect_placehold, .planet-6-click .nav .nav_inspect.nav_inspect_placehold, .planet-7-click .nav .nav_inspect.nav_inspect_placehold, .planet-8-click .nav .nav_inspect.nav_inspect_placehold, .planet-9-click .nav .nav_inspect.nav_inspect_placehold {
+  display: none; }
+
+.planet-1-click .nav .nav_inspect_planet-1, .planet-2-click .nav .nav_inspect_planet-2, .planet-3-click .nav .nav_inspect_planet-3, .planet-4-click .nav .nav_inspect_planet-4, .planet-5-click .nav .nav_inspect_planet-5, .planet-6-click .nav .nav_inspect_planet-6, .planet-7-click .nav .nav_inspect_planet-7, .planet-8-click .nav .nav_inspect_planet-8, .planet-9-click .nav .nav_inspect_planet-9 {
+  display: block; }
+
+.planet-1-inspect .orbit.one, .planet-2-inspect .orbit.two, .planet-3-inspect .orbit.three, .planet-4-inspect .orbit.four, .planet-5-inspect .orbit.belt, .planet-6-inspect .orbit.five, .planet-7-inspect .orbit.six, .planet-8-inspect .orbit.seven, .planet-9-inspect .orbit.eight {
+  border-color: rgba(255, 255, 255, 0);
+  display: block !important; }
+  .planet-1-inspect .orbit.one .planet, .planet-2-inspect .orbit.two .planet, .planet-3-inspect .orbit.three .planet, .planet-4-inspect .orbit.four .planet, .planet-5-inspect .orbit.belt .planet, .planet-6-inspect .orbit.five .planet, .planet-7-inspect .orbit.six .planet, .planet-8-inspect .orbit.seven .planet, .planet-9-inspect .orbit.eight .planet {
+    top: 0;
+    height: 18vh !important;
+    width: 18vh !important;
+    max-width: 18vh;
+    max-height: 18vh; }
+  .planet-1-inspect .orbit.one .planet::after, .planet-2-inspect .orbit.two .planet::after, .planet-3-inspect .orbit.three .planet::after, .planet-4-inspect .orbit.four .planet::after, .planet-5-inspect .orbit.belt .planet::after, .planet-6-inspect .orbit.five .planet::after, .planet-7-inspect .orbit.six .planet::after, .planet-8-inspect .orbit.seven .planet::after, .planet-9-inspect .orbit.eight .planet::after {
+    display: none; }
+  .planet-1-inspect .orbit.one .elip, .planet-2-inspect .orbit.two .elip, .planet-3-inspect .orbit.three .elip, .planet-4-inspect .orbit.four .elip, .planet-5-inspect .orbit.belt .elip, .planet-6-inspect .orbit.five .elip, .planet-7-inspect .orbit.six .elip, .planet-8-inspect .orbit.seven .elip, .planet-9-inspect .orbit.eight .elip {
+    -webkit-animation-iteration-count: unset; }
+
+.planet-inspect .inner_planets, .planet-inspect .outer_planets {
+  z-index: -1; }
+
+.planet-1-inspect .orbit.one .planet {
+  background-image: radial-gradient(circle at 7vh 7vh, darkorange, #000); }
+
+.planet-2-inspect .orbit.two .planet {
+  background-image: radial-gradient(circle at 7vh 7vh, white, #000); }
+
+.planet-3-inspect .orbit.three .planet {
+  background-image: radial-gradient(circle at 7vh 7vh, darkcyan, #000); }
+
+.planet-4-inspect .orbit.four .planet {
+  background-image: radial-gradient(circle at 7vh 7vh, red, #000); }
+
+.planet-6-inspect .orbit.five .planet {
+  background-image: radial-gradient(circle at 7vh 7vh, lightcoral, #000); }
+
+.planet-7-inspect .orbit.six .planet {
+  background-image: radial-gradient(circle at 7vh 7vh, lightgoldenrodyellow, #000); }
+
+.planet-8-inspect .orbit.seven .planet {
+  background-image: radial-gradient(circle at 7vh 7vh, lightblue, #000); }
+
+.planet-9-inspect .orbit.eight .planet {
+  background-image: radial-gradient(circle at 7vh 7vh, cornflowerblue, #000); }
+
+#moons-planet-3 .orbit.moon-three {
+  transform: rotate(0deg);
+  left: calc(50vw - 30vh);
+  top: calc(50vh - 30vh);
+  width: 60vh;
+  height: 60vh;
+  border-color: rgba(112, 128, 144, 0.4);
+  z-index: 99; }
+  #moons-planet-3 .orbit.moon-three .center {
+    -webkit-transition-duration: 60s;
+    -webkit-animation-duration: 60s; }
+  #moons-planet-3 .orbit.moon-three .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 30vh;
+    background: slategrey; }
+  #moons-planet-3 .orbit.moon-three .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-3 .orbit.belt {
+    left: calc(50vw - 15vh);
+    top: calc(50vh - 15vh);
+    width: 30vh;
+    height: 30vh;
+    z-index: 100; }
+  #moons-planet-3 .orbit.belt .cloud {
+    height: calc(90% - 8vh);
+    top: 5%;
+    width: calc(100% - 8vh);
+    border: 4vh solid rgba(128, 128, 128, 0.06); }
+  #moons-planet-3 .orbit.belt .cloud.two {
+    height: calc(90% - 4vh);
+    width: calc(100% - 4vh);
+    border: 2vh solid rgba(128, 128, 128, 0.06); }
+  #moons-planet-3 .orbit.sat_iss {
+    transform: rotate(0deg);
+    left: calc(50vw - 10vh);
+    top: calc(50vh - 10vh);
+    width: 20vh;
+    height: 20vh;
+    border-color: rgba(255, 255, 255, 0.3);
+    z-index: 101; }
+  #moons-planet-3 .orbit.sat_iss .center {
+    -webkit-transition-duration: 0.5s;
+    -webkit-animation-duration: 0.5s; }
+  #moons-planet-3 .orbit.sat_iss .planet {
+    width: 1vh !important;
+    height: 1vh !important;
+    top: 10vh;
+    background: white; }
+  #moons-planet-3 .orbit.sat_iss .planet::after {
+    -webkit-transition-duration: 3s;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-name: full-rotate;
+    background: white; }
+
+#moons-planet-4 .orbit.moon-one {
+  transform: rotate(0deg);
+  left: calc(50vw - 20vh);
+  top: calc(50vh - 20vh);
+  width: 40vh;
+  height: 40vh;
+  border-color: rgba(112, 128, 144, 0.4);
+  z-index: 99; }
+  #moons-planet-4 .orbit.moon-one .center {
+    -webkit-transition-duration: 3s;
+    -webkit-animation-duration: 3s; }
+  #moons-planet-4 .orbit.moon-one .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 20vh;
+    background: slategrey; }
+  #moons-planet-4 .orbit.moon-one .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-4 .orbit.moon-two {
+    transform: rotate(0deg);
+    left: calc(50vw - 27.5vh);
+    top: calc(50vh - 27.5vh);
+    width: 55vh;
+    height: 55vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 98; }
+  #moons-planet-4 .orbit.moon-two .center {
+    -webkit-transition-duration: 12s;
+    -webkit-animation-duration: 12s; }
+  #moons-planet-4 .orbit.moon-two .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 27.5vh;
+    background: slategrey; }
+  #moons-planet-4 .orbit.moon-two .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+
+#moons-planet-5 .orbit.moon-one {
+  transform: rotate(0deg);
+  left: calc(50vw - 15vh);
+  top: calc(50vh - 15vh);
+  width: 30vh;
+  height: 30vh;
+  border-color: rgba(112, 128, 144, 0.4);
+  z-index: 99; }
+  #moons-planet-5 .orbit.moon-one .center {
+    -webkit-transition-duration: 3s;
+    -webkit-animation-duration: 3s; }
+  #moons-planet-5 .orbit.moon-one .planet {
+    width: 3vh !important;
+    height: 3vh !important;
+    top: 15vh;
+    background: slategrey; }
+  #moons-planet-5 .orbit.moon-one .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: #b0915f; }
+  #moons-planet-5 .orbit.moon-two {
+    transform: rotate(0deg);
+    left: calc(50vw - 20vh);
+    top: calc(50vh - 20vh);
+    width: 40vh;
+    height: 40vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 98; }
+  #moons-planet-5 .orbit.moon-two .center {
+    -webkit-transition-duration: 6.25s;
+    -webkit-animation-duration: 6.25s; }
+  #moons-planet-5 .orbit.moon-two .planet {
+    width: 3vh !important;
+    height: 3vh !important;
+    top: 20vh;
+    background: white; }
+  #moons-planet-5 .orbit.moon-two .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-5 .orbit.moon-three {
+    transform: rotate(0deg);
+    left: calc(50vw - 25vh);
+    top: calc(50vh - 25vh);
+    width: 50vh;
+    height: 50vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 97; }
+  #moons-planet-5 .orbit.moon-three .center {
+    -webkit-transition-duration: 12.6s;
+    -webkit-animation-duration: 12.6s; }
+  #moons-planet-5 .orbit.moon-three .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 25vh;
+    background: wheat; }
+  #moons-planet-5 .orbit.moon-three .planet::after {
+    -webkit-transition-duration: 13s;
+    -webkit-animation-duration: 13s;
+    -webkit-animation-name: full-rotate;
+    background: slategrey; }
+  #moons-planet-5 .orbit.moon-four {
+    transform: rotate(0deg);
+    left: calc(50vw - 32.5vh);
+    top: calc(50vh - 32.5vh);
+    width: 65vh;
+    height: 65vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 96; }
+  #moons-planet-5 .orbit.moon-four .center {
+    -webkit-transition-duration: 30s;
+    -webkit-animation-duration: 30s; }
+  #moons-planet-5 .orbit.moon-four .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 32.5vh;
+    background: whitesmoke; }
+  #moons-planet-5 .orbit.moon-four .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+
+#moons-planet-6 .orbit.moon-one {
+  transform: rotate(0deg);
+  left: calc(50vw - 12.5vh);
+  top: calc(50vh - 12.5vh);
+  width: 25vh;
+  height: 25vh;
+  border-color: rgba(112, 128, 144, 0.4);
+  z-index: 99; }
+  #moons-planet-6 .orbit.moon-one .center {
+    -webkit-transition-duration: 1.5s;
+    -webkit-animation-duration: 1.5s; }
+  #moons-planet-6 .orbit.moon-one .planet {
+    width: 2vh !important;
+    height: 2vh !important;
+    top: 12.5vh;
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-one .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-two {
+    transform: rotate(0deg);
+    left: calc(50vw - 16vh);
+    top: calc(50vh - 16vh);
+    width: 32vh;
+    height: 32vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 98; }
+  #moons-planet-6 .orbit.moon-two .center {
+    -webkit-transition-duration: 2.3s;
+    -webkit-animation-duration: 2.3s; }
+  #moons-planet-6 .orbit.moon-two .planet {
+    width: 2vh !important;
+    height: 2vh !important;
+    top: 16vh;
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-two .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-three {
+    transform: rotate(0deg);
+    left: calc(50vw - 19.5vh);
+    top: calc(50vh - 19.5vh);
+    width: 39vh;
+    height: 39vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 97; }
+  #moons-planet-6 .orbit.moon-three .center {
+    -webkit-transition-duration: 3s;
+    -webkit-animation-duration: 3s; }
+  #moons-planet-6 .orbit.moon-three .planet {
+    width: 2vh !important;
+    height: 2vh !important;
+    top: 19.5vh;
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-three .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-four {
+    transform: rotate(0deg);
+    left: calc(50vw - 23vh);
+    top: calc(50vh - 23vh);
+    width: 46vh;
+    height: 46vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 96; }
+  #moons-planet-6 .orbit.moon-four .center {
+    -webkit-transition-duration: 4.3s;
+    -webkit-animation-duration: 4.4s; }
+  #moons-planet-6 .orbit.moon-four .planet {
+    width: 2vh !important;
+    height: 2vh !important;
+    top: 23vh;
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-four .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-five {
+    transform: rotate(0deg);
+    left: calc(50vw - 26.5vh);
+    top: calc(50vh - 26.5vh);
+    width: 53vh;
+    height: 53vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 95; }
+  #moons-planet-6 .orbit.moon-five .center {
+    -webkit-transition-duration: 7.3s;
+    -webkit-animation-duration: 7.3s; }
+  #moons-planet-6 .orbit.moon-five .planet {
+    width: 2vh !important;
+    height: 2vh !important;
+    top: 26.5vh;
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-five .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-six {
+    transform: rotate(0deg);
+    left: calc(50vw - 35vh);
+    top: calc(50vh - 35vh);
+    width: 70vh;
+    height: 70vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 94; }
+  #moons-planet-6 .orbit.moon-six .center {
+    -webkit-transition-duration: 26s;
+    -webkit-animation-duration: 26s; }
+  #moons-planet-6 .orbit.moon-six .planet {
+    width: 6vh !important;
+    height: 6vh !important;
+    top: 35vh;
+    background: #dc9a48; }
+  #moons-planet-6 .orbit.moon-six .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-seven {
+    transform: rotate(0deg);
+    left: calc(50vw - 45vh);
+    top: calc(50vh - 45vh);
+    width: 90vh;
+    height: 90vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 93; }
+  #moons-planet-6 .orbit.moon-seven .center {
+    -webkit-transition-duration: 130s;
+    -webkit-animation-duration: 130s; }
+  #moons-planet-6 .orbit.moon-seven .planet {
+    width: 2vh !important;
+    height: 2vh !important;
+    top: 45vh;
+    background: slategrey; }
+  #moons-planet-6 .orbit.moon-seven .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+
+#moons-planet-7 .orbit.moon-one {
+  transform: rotate(0deg);
+  left: calc(50vw - 15vh);
+  top: calc(50vh - 15vh);
+  width: 30vh;
+  height: 30vh;
+  border-color: rgba(112, 128, 144, 0.4);
+  z-index: 99; }
+  #moons-planet-7 .orbit.moon-one .center {
+    -webkit-transition-duration: 3s;
+    -webkit-animation-duration: 3s; }
+  #moons-planet-7 .orbit.moon-one .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 15vh;
+    background: slategrey; }
+  #moons-planet-7 .orbit.moon-one .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-7 .orbit.moon-two {
+    transform: rotate(0deg);
+    left: calc(50vw - 20vh);
+    top: calc(50vh - 20vh);
+    width: 40vh;
+    height: 40vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 98; }
+  #moons-planet-7 .orbit.moon-two .center {
+    -webkit-transition-duration: 5.5s;
+    -webkit-animation-duration: 5.5s; }
+  #moons-planet-7 .orbit.moon-two .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 20vh;
+    background: slategrey; }
+  #moons-planet-7 .orbit.moon-two .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-7 .orbit.moon-three {
+    transform: rotate(0deg);
+    left: calc(50vw - 25vh);
+    top: calc(50vh - 25vh);
+    width: 50vh;
+    height: 50vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 97; }
+  #moons-planet-7 .orbit.moon-three .center {
+    -webkit-transition-duration: 8.7s;
+    -webkit-animation-duration: 8.7s; }
+  #moons-planet-7 .orbit.moon-three .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 25vh;
+    background: slategrey; }
+  #moons-planet-7 .orbit.moon-three .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-7 .orbit.moon-four {
+    transform: rotate(0deg);
+    left: calc(50vw - 30vh);
+    top: calc(50vh - 30vh);
+    width: 60vh;
+    height: 60vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 96; }
+  #moons-planet-7 .orbit.moon-four .center {
+    -webkit-transition-duration: 19s;
+    -webkit-animation-duration: 19s; }
+  #moons-planet-7 .orbit.moon-four .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 30vh;
+    background: slategrey; }
+  #moons-planet-7 .orbit.moon-four .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+  #moons-planet-7 .orbit.moon-five {
+    transform: rotate(0deg);
+    left: calc(50vw - 35vh);
+    top: calc(50vh - 35vh);
+    width: 70vh;
+    height: 70vh;
+    border-color: rgba(112, 128, 144, 0.4);
+    z-index: 95; }
+  #moons-planet-7 .orbit.moon-five .center {
+    -webkit-transition-duration: 29s;
+    -webkit-animation-duration: 29s; }
+  #moons-planet-7 .orbit.moon-five .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 35vh;
+    background: slategrey; }
+  #moons-planet-7 .orbit.moon-five .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+
+#moons-planet-8 .orbit.moon-one {
+  transform: rotate(0deg);
+  left: calc(50vw - 17.5vh);
+  top: calc(50vh - 17.5vh);
+  width: 35vh;
+  height: 35vh;
+  border-color: rgba(112, 128, 144, 0.4);
+  z-index: 99; }
+  #moons-planet-8 .orbit.moon-one .center {
+    -webkit-transition-duration: 6s;
+    -webkit-animation-duration: 6s; }
+  #moons-planet-8 .orbit.moon-one .planet {
+    width: 4vh !important;
+    height: 4vh !important;
+    top: 17.5vh;
+    background: slategrey; }
+  #moons-planet-8 .orbit.moon-one .planet::after {
+    -webkit-transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    transform: rotate(90deg);
+    background: slategrey; }
+
+.moons {
+  transition: 1s;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  transition-delay: 1.5s; }
+
+.moon-hover .inner_planets, .moon-hover .outer_planets, .moon-hover .moons .orbit {
+  opacity: 0.3; }
+
+.moon-1-hover .moons .orbit.moon-one, .moon-2-hover .moons .orbit.moon-two, .moon-3-hover .moons .orbit.moon-three, .moon-4-hover .moons .orbit.moon-four, .moon-5-hover .moons .orbit.moon-five, .moon-6-hover .moons .orbit.moon-six, .moon-7-hover .moons .orbit.moon-seven, .moon-8-hover .moons .orbit.moon-eight {
+  opacity: 1 !important; }
+
+.planet-inspect .moons {
+  transform: scale(1); }
+
+.time-key {
+  display: none; }
+  .time-key p {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    transition: 2s;
+    opacity: 0;
+    display: none; }
+
+.zoom_inner .time-key p.zoom_inner_time, .zoom_outer .time-key p.zoom_outer_time {
+  display: block; }
+
+.planet-click .time-key {
+  display: block; }
+  .planet-click .time-key p {
+    opacity: 0.5; }
+
+.info-hold_inner-planets, .info-hold_inner-planets {
+  transition: 0.3s; }
+
+.moon-1-hover .info-hold_inner-planets, .moon-2-hover .info-hold_inner-planets, .moon-3-hover .info-hold_inner-planets, .moon-4-hover .info-hold_inner-planets, .moon-5-hover .info-hold_inner-planets, .moon-6-hover .info-hold_inner-planets, .moon-7-hover .info-hold_inner-planets, .moon-8-hover .info-hold_inner-planets, .moon-1-hover .info-hold_outer-planets, .moon-2-hover .info-hold_outer-planets, .moon-3-hover .info-hold_outer-planets, .moon-4-hover .info-hold_outer-planets, .moon-5-hover .info-hold_outer-planets, .moon-6-hover .info-hold_outer-planets, .moon-7-hover .info-hold_outer-planets, .moon-8-hover .info-hold_outer-planets {
+  opacity: 0; }
+
+.moon-1-hover .info.moon-1, .moon-2-hover .info.moon-2, .moon-3-hover .info.moon-3, .moon-4-hover .info.moon-4, .moon-5-hover .info.moon-5, .moon-6-hover .info.moon-6, .moon-7-hover .info.moon-7, .moon-8-hover .info.moon-8 {
+  opacity: 1 !important; }
+
+.skew {
+  height: 100vh; }
