@@ -66,35 +66,50 @@ export function initializePlanets() {
 }
 
 // Function to initialize moons
-export function initializeMoons() {
-    document.querySelector('.moons').innerHTML = `
-        <!-- Planet 3 Moons (Earth) ++++++++++++++++++++++++++++++++++++++++++ -->
-        <div id="moons-planet-3">
-            <div class="orbit sat_iss moon-one">
-                <div class="center">
-                    <div class="elip">
-                        <div class="planet"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="orbit belt junk_cloud moon-two">
-                <div class="cloud one"></div>
-                <div class="cloud two"></div>
-                <div class="cloud three"></div>
-            </div>
-
-            <div class="orbit moon-three">
-                <div class="center">
-                    <div class="elip">
-                        <div class="planet"></div>
-                    </div>
-                </div>
+export function initializeMoons(planetId) {
+    // If no planetId is provided, clear the moons
+    if (!planetId) {
+        document.querySelector('.moons').innerHTML = '';
+        return;
+    }
+    
+    // Only load the moons for the specified planet
+    let moonsHTML = '';
+    
+    // Select the appropriate moon set based on the planetId
+    switch(planetId) {
+        case 3: // Earth
+            moonsHTML = `
+<!-- Planet 3 Moons (Earth) ++++++++++++++++++++++++++++++++++++++++++ -->
+<div id="moons-planet-3">
+    <div class="orbit sat_iss moon-one">
+        <div class="center">
+            <div class="elip">
+                <div class="planet"></div>
             </div>
         </div>
+    </div>
 
-        <!-- Planet 4 Moons (Mars) ++++++++++++++++++++++++++++++++++++++++++ -->
-        <div id="moons-planet-4">
+    <div class="orbit belt junk_cloud moon-two">
+        <div class="cloud one"></div>
+        <div class="cloud two"></div>
+        <div class="cloud three"></div>
+    </div>
+
+    <div class="orbit moon-three">
+        <div class="center">
+            <div class="elip">
+                <div class="planet"></div>
+            </div>
+        </div>
+    </div>
+</div>
+`;
+            break;
+        case 4: // Mars
+            moonsHTML = `
+<!-- Planet 4 Moons (Mars) ++++++++++++++++++++++++++++++++++++++++++ -->
+<div id="moons-planet-4">
             <div class="orbit moon-one">
                 <div class="center">
                     <div class="elip">
@@ -110,10 +125,13 @@ export function initializeMoons() {
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Planet 5 Moons (Jupiter) ++++++++++++++++++++++++++++++++++++++++++ -->
-        <div id="moons-planet-5">
+</div>
+`;
+            break;
+        case 6: // Jupiter (Planet 5 in UI numbering)
+            moonsHTML = `
+<!-- Planet 5 Moons (Jupiter) ++++++++++++++++++++++++++++++++++++++++++ -->
+<div id="moons-planet-5">
             <div class="orbit moon-one">
                 <div class="center">
                     <div class="elip">
@@ -145,10 +163,13 @@ export function initializeMoons() {
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Planet 6 Moons (Saturn) ++++++++++++++++++++++++++++++++++++++++++ -->
-        <div id="moons-planet-6">
+</div>
+`;
+            break;
+        case 7: // Saturn (Planet 6 in UI numbering)
+            moonsHTML = `
+<!-- Planet 6 Moons (Saturn) ++++++++++++++++++++++++++++++++++++++++++ -->
+<div id="moons-planet-6">
             <div class="orbit moon-one">
                 <div class="center">
                     <div class="elip">
@@ -212,10 +233,13 @@ export function initializeMoons() {
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Planet 7 Moons (Uranus) ++++++++++++++++++++++++++++++++++++++++++ -->
-        <div id="moons-planet-7">
+</div>
+`;
+            break;
+        case 8: // Uranus (Planet 7 in UI numbering)
+            moonsHTML = `
+<!-- Planet 7 Moons (Uranus) ++++++++++++++++++++++++++++++++++++++++++ -->
+<div id="moons-planet-7">
             <div class="orbit moon-one">
                 <div class="center">
                     <div class="elip">
@@ -255,23 +279,35 @@ export function initializeMoons() {
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Planet 8 Moons (Neptune) ++++++++++++++++++++++++++++++++++++++++++ -->
-        <div id="moons-planet-8">
-            <div class="orbit moon-one">
-                <div class="center">
-                    <div class="elip">
-                        <div class="planet"></div>
-                    </div>
-                </div>
+</div>
+`;
+            break;
+        case 9: // Neptune (Planet 8 in UI numbering)
+            moonsHTML = `
+<!-- Planet 8 Moons (Neptune) ++++++++++++++++++++++++++++++++++++++++++ -->
+<div id="moons-planet-8">
+    <div class="orbit moon-one">
+        <div class="center">
+            <div class="elip">
+                <div class="planet"></div>
             </div>
         </div>
-    `;
+    </div>
+</div>
+`;
+            break;
+        default:
+            // No moons for other planets
+            moonsHTML = '';
+    }
+    
+    // Set the moons HTML
+    document.querySelector('.moons').innerHTML = moonsHTML;
 }
 
 // Function to initialize information panels
-export function initializeInfo() {
+export function initializeInfo(planetId) {
+    // Initialize the planet info panels (always)
     // Inner planets info
     document.querySelector('.info-hold_inner-planets').innerHTML = `
         <div id="info-inner-planets">
@@ -414,104 +450,258 @@ export function initializeInfo() {
         </div>
     `;
 
-    // Moons info
-    document.querySelector('.info-hold_moons').innerHTML = `
-        <!-- Planet 3 (Earth) Moons Info -->
-        <div id="info-planet3-moons">
-            <div class="info moon-1">
-                <h1>Size</h1>
-                <p>Width | 109 m</p>
-                <p>height | 73 m</p>
-                <p>Weight | 408,000 kg</p>
-                <h1>Distance from planet</h1>
-                <p>408 km</p>
-                <h1>Orbital Period</h1>
-                <p>1.5 hours</p>
-                <h1>Occupants</h1>
-                <p>3 - 6</p>
-            </div>
-            <div class="info moon-2">
-                <h1>Satellites launcheed into orbit</h1>
-                <p>About 8,650</p>
-                <h1>Number of these still functioning</h1>
-                <p>About 1,800</p>
-                <h1>Number of objects larger then 10cm</h1>
-                <p>29,000</p>
-                <h1>Total mass of all space objects in orbit</h1>
-                <p>over 8,100 tonnes</p>
-            </div>
-            <div class="info moon-3">
-                <h1>Size</h1>
-                <p>Diameter | 1,737 km</p>
-                <h1>Distance from planet</h1>
-                <p>Perigee | 363,104 km</p>
-                <p>Apogee  | 405,696 km</p>
-                <h1>Orbital Period</h1>
-                <p>24 Days</p>
-            </div>
-        </div>
-        
-        <!-- Planet 4 (Mars) Moons Info -->
-        <div id="info-planet4-moons">
-            <div class="info moon-1">
-                <h1>Size</h1>
-                <p>Diameter | 11.267 km</p>
-                <h1>Distance from planet</h1>
-                <p>Perigee | 9234 km</p>
-                <p>Apogee  | 9517 km</p>
-                <h1>Orbital Period</h1>
-                <p>8 Hours</p>
-            </div>
-            <div class="info moon-2">
-                <h1>Size</h1>
-                <p>Diameter | 1,737 km</p>
-                <h1>Distance from planet</h1>
-                <p>Perigee | 23455 km</p>
-                <p>Apogee  | 23470 km</p>
-                <h1>Orbital Period</h1>
-                <p>30 Hours</p>
-            </div>
-        </div>
-        
-        <!-- Other planets' moons info follows the same pattern -->
-        <!-- Including Planet 5, 6, 7, and 8's moons -->
-        <div id="info-planet5-moons">
-            <div class="info moon-1">
-                <h1>Size</h1>
-                <p>Diameter | 3,643 km</p>
-                <h1>Distance from planet</h1>
-                <p>Perigee | 420,000 km</p>
-                <p>Apogee  | 423,400 km</p>
-                <h1>Orbital Period</h1>
-                <p>42 Hours</p>
-            </div>
-            <div class="info moon-2">
-                <h1>Size</h1>
-                <p>Diameter | 3,121 km</p>
-                <h1>Distance from planet</h1>
-                <p>Perigee | 664,862 km</p>
-                <p>Apogee  | 676,938 km</p>
-                <h1>Orbital Period</h1>
-                <p>85 Hours</p>
-            </div>
-            <div class="info moon-3">
-                <h1>Size</h1>
-                <p>Diameter | 5,268 km</p>
-                <h1>Distance from planet</h1>
-                <p>Perigee | 1,069,200 km</p>
-                <p>Apogee  | 1,071,600 km</p>
-                <h1>Orbital Period</h1>
-                <p>172 Hours</p>
-            </div>
-            <div class="info moon-4">
-                <h1>Size</h1>
-                <p>Diameter | 4,820 km</p>
-                <h1>Distance from planet</h1>
-                <p>Perigee | 1,869,000 km</p>
-                <p>Apogee  | 1,897,000 km</p>
-                <h1>Orbital Period</h1>
-                <p>17 Days</p>
-            </div>
-        </div>
-    `;
+    // Clear the moon info container by default
+    document.querySelector('.info-hold_moons').innerHTML = '';
+    
+    // If no planetId provided, return early (just initialize the basic planet info)
+    if (!planetId) {
+        return;
+    }
+    
+    // Moons info - only load for the specific planet
+    let moonsInfoHTML = '';
+    
+    switch(planetId) {
+        case 3: // Earth
+            moonsInfoHTML = `
+            <!-- Planet 3 (Earth) Moons Info -->
+            <div id="info-planet3-moons">
+                <div class="info moon-1">
+                    <h1>Size</h1>
+                    <p>Width | 109 m</p>
+                    <p>height | 73 m</p>
+                    <p>Weight | 408,000 kg</p>
+                    <h1>Distance from planet</h1>
+                    <p>408 km</p>
+                    <h1>Orbital Period</h1>
+                    <p>1.5 hours</p>
+                    <h1>Occupants</h1>
+                    <p>3 - 6</p>
+                </div>
+                <div class="info moon-2">
+                    <h1>Satellites launcheed into orbit</h1>
+                    <p>About 8,650</p>
+                    <h1>Number of these still functioning</h1>
+                    <p>About 1,800</p>
+                    <h1>Number of objects larger then 10cm</h1>
+                    <p>29,000</p>
+                    <h1>Total mass of all space objects in orbit</h1>
+                    <p>over 8,100 tonnes</p>
+                </div>
+                <div class="info moon-3">
+                    <h1>Size</h1>
+                    <p>Diameter | 1,737 km</p>
+                    <h1>Distance from planet</h1>
+                    <p>Perigee | 363,104 km</p>
+                    <p>Apogee  | 405,696 km</p>
+                    <h1>Orbital Period</h1>
+                    <p>24 Days</p>
+                </div>
+            </div>`;
+            break;
+        case 4: // Mars
+            moonsInfoHTML = `
+            <!-- Planet 4 (Mars) Moons Info -->
+            <div id="info-planet4-moons">
+                <div class="info moon-1">
+                    <h1>Size</h1>
+                    <p>Diameter | 11.267 km</p>
+                    <h1>Distance from planet</h1>
+                    <p>Perigee | 9234 km</p>
+                    <p>Apogee  | 9517 km</p>
+                    <h1>Orbital Period</h1>
+                    <p>8 Hours</p>
+                </div>
+                <div class="info moon-2">
+                    <h1>Size</h1>
+                    <p>Diameter | 1,737 km</p>
+                    <h1>Distance from planet</h1>
+                    <p>Perigee | 23455 km</p>
+                    <p>Apogee  | 23470 km</p>
+                    <h1>Orbital Period</h1>
+                    <p>30 Hours</p>
+                </div>
+            </div>`;
+            break;
+        case 6: // Jupiter (Planet 5 in UI numbering)
+            moonsInfoHTML = `
+            <!-- Planet 5 (Jupiter) Moons Info -->
+            <div id="info-planet5-moons">
+                <div class="info moon-1">
+                    <h1>Size</h1>
+                    <p>Diameter | 3,643 km</p>
+                    <h1>Distance from planet</h1>
+                    <p>Perigee | 420,000 km</p>
+                    <p>Apogee  | 423,400 km</p>
+                    <h1>Orbital Period</h1>
+                    <p>42 Hours</p>
+                </div>
+                <div class="info moon-2">
+                    <h1>Size</h1>
+                    <p>Diameter | 3,121 km</p>
+                    <h1>Distance from planet</h1>
+                    <p>Perigee | 664,862 km</p>
+                    <p>Apogee  | 676,938 km</p>
+                    <h1>Orbital Period</h1>
+                    <p>85 Hours</p>
+                </div>
+                <div class="info moon-3">
+                    <h1>Size</h1>
+                    <p>Diameter | 5,268 km</p>
+                    <h1>Distance from planet</h1>
+                    <p>Perigee | 1,069,200 km</p>
+                    <p>Apogee  | 1,071,600 km</p>
+                    <h1>Orbital Period</h1>
+                    <p>172 Hours</p>
+                </div>
+                <div class="info moon-4">
+                    <h1>Size</h1>
+                    <p>Diameter | 4,820 km</p>
+                    <h1>Distance from planet</h1>
+                    <p>Perigee | 1,869,000 km</p>
+                    <p>Apogee  | 1,897,000 km</p>
+                    <h1>Orbital Period</h1>
+                    <p>17 Days</p>
+                </div>
+            </div>`;
+            break;
+        case 7: // Saturn (Planet 6 in UI numbering)
+            moonsInfoHTML = `
+            <!-- Planet 6 (Saturn) Moons Info -->
+            <div id="info-planet6-moons">
+                <div class="info moon-1">
+                    <h1>Size</h1>
+                    <p>Mimas</p>
+                </div>
+                <div class="info moon-2">
+                    <h1>Size</h1>
+                    <p>Enceladus</p>
+                </div>
+                <div class="info moon-3">
+                    <h1>Size</h1>
+                    <p>Tethys</p>
+                </div>
+                <div class="info moon-4">
+                    <h1>Size</h1>
+                    <p>Dione</p>
+                </div>
+                <div class="info moon-5">
+                    <h1>Size</h1>
+                    <p>Rhea</p>
+                </div>
+                <div class="info moon-6">
+                    <h1>Size</h1>
+                    <p>Titan</p>
+                </div>
+                <div class="info moon-7">
+                    <h1>Size</h1>
+                    <p>Iapetus</p>
+                </div>
+            </div>`;
+            break;
+        case 8: // Uranus (Planet 7 in UI numbering)
+            moonsInfoHTML = `
+            <!-- Planet 7 (Uranus) Moons Info -->
+            <div id="info-planet7-moons">
+                <div class="info moon-1">
+                    <h1>Size</h1>
+                    <p>Miranda</p>
+                </div>
+                <div class="info moon-2">
+                    <h1>Size</h1>
+                    <p>Ariel</p>
+                </div>
+                <div class="info moon-3">
+                    <h1>Size</h1>
+                    <p>Umbriel</p>
+                </div>
+                <div class="info moon-4">
+                    <h1>Size</h1>
+                    <p>Titania</p>
+                </div>
+                <div class="info moon-5">
+                    <h1>Size</h1>
+                    <p>Oberon</p>
+                </div>
+            </div>`;
+            break;
+        case 9: // Neptune (Planet 8 in UI numbering)
+            moonsInfoHTML = `
+            <!-- Planet 8 (Neptune) Moons Info -->
+            <div id="info-planet8-moons">
+                <div class="info moon-1">
+                    <h1>Size</h1>
+                    <p>Triton</p>
+                </div>
+            </div>`;
+            break;
+        default:
+            moonsInfoHTML = '';
+    }
+    
+    // Set the moons info HTML
+    document.querySelector('.info-hold_moons').innerHTML = moonsInfoHTML;
+    
+    // Also update the moon names based on the planet
+    let moonNamesHTML = '';
+    
+    switch(planetId) {
+        case 3: // Earth
+            moonNamesHTML = `
+            <div id="names-planet-3">
+                <div class="name m-one"><p>International Space Station</p></div>
+                <div class="name m-two"><p>Humans Orbiting Stuff</p></div>
+                <div class="name m-three"><p>The Moon!</p></div>
+            </div>`;
+            break;
+        case 4: // Mars
+            moonNamesHTML = `
+            <div id="names-planet-4">
+                <div class="name m-one"><p>Phobos</p></div>
+                <div class="name m-two"><p>Deimos</p></div>
+            </div>`;
+            break;
+        case 6: // Jupiter (Planet 5 in UI numbering)
+            moonNamesHTML = `
+            <div id="names-planet-5">
+                <div class="name m-one"><p>Io</p></div>
+                <div class="name m-two"><p>Europa</p></div>
+                <div class="name m-three"><p>Ganymede</p></div>
+                <div class="name m-four"><p>Callisto</p></div>
+            </div>`;
+            break;
+        case 7: // Saturn (Planet 6 in UI numbering)
+            moonNamesHTML = `
+            <div id="names-planet-6">
+                <div class="name m-one"><p>Mimas</p></div>
+                <div class="name m-two"><p>Enceladus</p></div>
+                <div class="name m-three"><p>Tethys</p></div>
+                <div class="name m-four"><p>Dione</p></div>
+                <div class="name m-five"><p>Rhea</p></div>
+                <div class="name m-six"><p>Titan</p></div>
+                <div class="name m-seven"><p>Iapetus</p></div>
+            </div>`;
+            break;
+        case 8: // Uranus (Planet 7 in UI numbering)
+            moonNamesHTML = `
+            <div id="names-planet-7">
+                <div class="name m-one"><p>Miranda</p></div>
+                <div class="name m-two"><p>Ariel</p></div>
+                <div class="name m-three"><p>Umbriel</p></div>
+                <div class="name m-four"><p>Titania</p></div>
+                <div class="name m-five"><p>Oberon</p></div>
+            </div>`;
+            break;
+        case 9: // Neptune (Planet 8 in UI numbering)
+            moonNamesHTML = `
+            <div id="names-planet-8">
+                <div class="name m-one"><p>Triton</p></div>
+            </div>`;
+            break;
+        default:
+            moonNamesHTML = '';
+    }
+    
+    // Set the moon names HTML
+    document.querySelector('.name-hold-moons').innerHTML = moonNamesHTML;
 }

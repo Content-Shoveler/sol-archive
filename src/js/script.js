@@ -1,4 +1,5 @@
 import jQuery from 'jquery';
+import { initializePlanets, initializeMoons, initializeInfo } from './solar-data.js';
 
 // Info Button
 jQuery(document).ready(function($) {
@@ -37,16 +38,12 @@ jQuery(document).ready(function($) {
   }
 
   // How We Start
-  $('.inner_planets').load('/php/planets.php #inner_planets', function() {$(this).innerPlanets();});
-  $('.outer_planets').load('/php/planets.php #outer_planets', function() {$(this).outerPlanets();});
-  $('.info-hold_inner-planets').load('/php/info.php #info-inner-planets');
-  $('.info-hold_outer-planets').load('/php/info.php #info-outer-planets');
-
-  $('.name-hold-inner').load('/php/info.php #names-inner');
-  $('.name-hold-outer').load('/php/info.php #names-outer');
-  $('.name-hold-object').load('/php/info.php #names-object');
-
-  $('.name-hold-moons').load('/php/info.php #names-planet-3');
+  initializePlanets(); // Initialize planet names
+  initializeInfo(); // Initialize information panels
+  
+  // These need to be called after the HTML is already populated
+  $('.inner_planets').innerPlanets();
+  $('.outer_planets').outerPlanets();
 
   // Nav:: Farout -->> Outer Planets
   $('.nav_steps_3 .nav_in').click(function(){
@@ -71,21 +68,39 @@ jQuery(document).ready(function($) {
   // Nav:: DIRECT -->> Inner Planets
   $('.nav_direct_inner').click(function(){
     $('body').removeClass().addClass('zoom_inner');
-    if ( $( "#inner_planets" ).length < 1 ) { $('.inner_planets').load('/php/planets.php #inner_planets', function() {$(this).innerPlanets();}); }
-    if ( $( "#outer_planets" ).length < 1 ) { $('.outer_planets').load('/php/planets.php #outer_planets', function() {$(this).outerPlanets();}); }
+    if ( $( "#inner_planets" ).length < 1 ) { 
+      initializePlanets();
+      $('.inner_planets').innerPlanets(); 
+    }
+    if ( $( "#outer_planets" ).length < 1 ) { 
+      initializePlanets();
+      $('.outer_planets').outerPlanets(); 
+    }
   });
 
   // Nav:: DIRECT -->> Outer Planets
   $('.nav_direct_outer').click(function(){
     $('body').removeClass().addClass('zoom_outer');
-    if ( $( "#inner_planets" ).length < 1 ) { $('.inner_planets').load('/php/planets.php #inner_planets', function() {$(this).innerPlanets();}); }
-    if ( $( "#outer_planets" ).length < 1 ) { $('.outer_planets').load('/php/planets.php #outer_planets', function() {$(this).outerPlanets();}); }
+    if ( $( "#inner_planets" ).length < 1 ) { 
+      initializePlanets();
+      $('.inner_planets').innerPlanets(); 
+    }
+    if ( $( "#outer_planets" ).length < 1 ) { 
+      initializePlanets(); 
+      $('.outer_planets').outerPlanets(); 
+    }
   });
 
   $('.nav_deselect').click(function(){
     $('body').removeClass('planet-1-click planet-2-click planet-3-click planet-4-click planet-5-click planet-6-click planet-7-click planet-8-click planet-9-click planet-click');
-    if ( $( "#inner_planets" ).length < 1 ) { $('.inner_planets').load('/php/planets.php #inner_planets', function() {$(this).innerPlanets();}); }
-    if ( $( "#outer_planets" ).length < 1 ) { $('.outer_planets').load('/php/planets.php #outer_planets', function() {$(this).outerPlanets();}); }
+    if ( $( "#inner_planets" ).length < 1 ) { 
+      initializePlanets(); 
+      $('.inner_planets').innerPlanets(); 
+    }
+    if ( $( "#outer_planets" ).length < 1 ) { 
+      initializePlanets(); 
+      $('.outer_planets').outerPlanets(); 
+    }
   });
 
 });
@@ -111,50 +126,50 @@ jQuery(document).ready(function($) {
 
   $(".nav_inspect_planet-3").click(function (){
     $('body').addClass('planet-3-inspect planet-inspect').removeClass('planet-click');
-    $('.moons').load('/php/moons.php #moons-planet-3', function() {$(this).planetMoons();});
-    $('.info-hold_moons').load('/php/info.php #info-planet3-moons');
-    $('.name-hold-moons').load('/php/info.php #names-planet-3');
+    initializeMoons(3); // Pass planet ID 3 (Earth)
+    $('.moons').planetMoons();
+    initializeInfo(3); // Pass planet ID 3 (Earth)
   });
 
   $(".nav_inspect_planet-4").click(function (){
     $('body').addClass('planet-4-inspect planet-inspect').removeClass('planet-click');
-    $('.moons').load('/php/moons.php #moons-planet-4', function() {$(this).planetMoons();});
-    $('.info-hold_moons').load('/php/info.php #info-planet4-moons');
-    $('.name-hold-moons').load('/php/info.php #names-planet-4');
+    initializeMoons(4); // Pass planet ID 4 (Mars)
+    $('.moons').planetMoons();
+    initializeInfo(4); // Pass planet ID 4 (Mars)
   });
 
   $(".nav_inspect_planet-6").click(function (){
     $('body').addClass('planet-6-inspect planet-inspect').removeClass('planet-click');
-    $('.moons').load('/php/moons.php #moons-planet-5', function() {$(this).planetMoons();});
-    $('.info-hold_moons').load('/php/info.php #info-planet5-moons');
-    $('.name-hold-moons').load('/php/info.php #names-planet-5');
+    initializeMoons(6); // Pass planet ID 6 (Jupiter - UI Planet 5)
+    $('.moons').planetMoons();
+    initializeInfo(6); // Pass planet ID 6 (Jupiter - UI Planet 5)
   });
 
   $(".nav_inspect_planet-7").click(function (){
     $('body').addClass('planet-7-inspect planet-inspect').removeClass('planet-click');
-    $('.moons').load('/php/moons.php #moons-planet-6', function() {$(this).planetMoons();});
-    $('.info-hold_moons').load('/php/info.php #info-planet6-moons');
-    $('.name-hold-moons').load('/php/info.php #names-planet-6');
+    initializeMoons(7); // Pass planet ID 7 (Saturn - UI Planet 6)
+    $('.moons').planetMoons();
+    initializeInfo(7); // Pass planet ID 7 (Saturn - UI Planet 6)
   });
 
   $(".nav_inspect_planet-8").click(function (){
     $('body').addClass('planet-8-inspect planet-inspect').removeClass('planet-click');
-    $('.moons').load('/php/moons.php #moons-planet-7', function() {$(this).planetMoons();});
-    $('.info-hold_moons').load('/php/info.php #info-planet7-moons');
-    $('.name-hold-moons').load('/php/info.php #names-planet-7');
+    initializeMoons(8); // Pass planet ID 8 (Uranus - UI Planet 7)
+    $('.moons').planetMoons();
+    initializeInfo(8); // Pass planet ID 8 (Uranus - UI Planet 7)
   });
 
   $(".nav_inspect_planet-9").click(function (){
     $('body').addClass('planet-9-inspect planet-inspect').removeClass('planet-click');
-    $('.moons').load('/php/moons.php #moons-planet-8', function() {$(this).planetMoons();});
-    $('.info-hold_moons').load('/php/info.php #info-planet8-moons');
-    $('.name-hold-moons').load('/php/info.php #names-planet-8');
+    initializeMoons(9); // Pass planet ID 9 (Neptune - UI Planet 8)
+    $('.moons').planetMoons();
+    initializeInfo(9); // Pass planet ID 9 (Neptune - UI Planet 8)
   });
 
   // Global Deselect
   $('.nav_deselect').click(function(){
     $('body').removeClass('planet-1-inspect planet-2-inspect planet-3-inspect planet-4-inspect planet-5-inspect planet-6-inspect planet-7-inspect planet-8-inspect planet-9-inspect planet-inspect');
-    $('.moons').empty();
+    initializeMoons(); // Clear moons
     $('.info-hold_moons').empty();
     $('.name-hold-moons').empty();
   });
@@ -195,7 +210,4 @@ jQuery(document).ready(function($) {
   $(".sun").hover(function () {$('body').addClass('planet-0-hover');},function () {$('body').removeClass('planet-0-hover');});
 });
 
-// Lazy Load Tilt Stuff
-jQuery(document).ready(function($) {
-  $.getScript("/js/vanilla-tilt.min.js")
-});
+// No need to lazy load tilt - it's already imported in index.js
