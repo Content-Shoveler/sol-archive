@@ -3,23 +3,14 @@ import '../scss/main.scss';
 
 // Import JavaScript dependencies
 import jQuery from 'jquery';
-window.jQuery = jQuery;
+window.jQuery = jQuery; // Expose jQuery globally for legacy script support
 import './vanilla-tilt.min.js';
 
-// Import main script
-import './script.js';
-
-// Solar System Information - This would have been in the PHP files
+// Import solar system components
 import { initializePlanets, initializeMoons, initializeInfo } from './solar-data.js';
 
-// Initialize the solar system data
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize planets
-    initializePlanets();
-    
-    // Initialize moons
-    initializeMoons();
-    
-    // Initialize information panels
-    initializeInfo();
-});
+// Import main script - must be imported after jQuery is set globally
+import './script.js';
+
+// The DOMContentLoaded initialization is redundant since script.js already 
+// handles initialization with jQuery document.ready

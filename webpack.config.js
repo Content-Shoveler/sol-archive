@@ -56,50 +56,19 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
+        // Copy favicon and icon files directly to root
         { 
-          from: 'original/android-chrome-192x192.png',
-          to: 'android-chrome-192x192.png' 
+          from: 'original/*.{png,ico,xml,svg,webmanifest}',
+          to: '[name][ext]',
+          globOptions: {
+            ignore: ['**/index.php', '**/README.md'],
+          },
         },
-        { 
-          from: 'original/android-chrome-256x256.png',
-          to: 'android-chrome-256x256.png' 
-        },
-        { 
-          from: 'original/apple-touch-icon.png',
-          to: 'apple-touch-icon.png' 
-        },
-        { 
-          from: 'original/browserconfig.xml',
-          to: 'browserconfig.xml' 
-        },
-        { 
-          from: 'original/favicon-16x16.png',
-          to: 'favicon-16x16.png' 
-        },
-        { 
-          from: 'original/favicon-32x32.png',
-          to: 'favicon-32x32.png' 
-        },
-        { 
-          from: 'original/favicon.ico',
-          to: 'favicon.ico' 
-        },
-        { 
-          from: 'original/mstile-150x150.png',
-          to: 'mstile-150x150.png' 
-        },
-        { 
-          from: 'original/safari-pinned-tab.svg',
-          to: 'safari-pinned-tab.svg' 
-        },
-        { 
-          from: 'original/site.webmanifest',
-          to: 'site.webmanifest' 
-        },
-        { 
+        // Copy webfonts to webfonts directory
+        {
           from: 'original/webfonts',
-          to: 'webfonts' 
-        },
+          to: 'webfonts'
+        }
       ],
     }),
   ],
