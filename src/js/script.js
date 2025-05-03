@@ -32,8 +32,9 @@ jQuery(document).ready(function($) {
     setupPlanetEvents('.orbit.four', 'planet-4-hover', 'planet-4-click', 'zoom_inner');
     setupPlanetEvents('.orbit.belt', 'planet-5-hover', 'planet-5-click', 'zoom_inner');
     
+    // No longer emptying outer planets when inspecting in inner zoom
     $(".nav_inspect").click(function() {
-      $('.zoom_inner .outer_planets').empty();
+      // Empty call removed to prevent planets from unloading
     });
     
     return this;
@@ -45,8 +46,9 @@ jQuery(document).ready(function($) {
     setupPlanetEvents('.orbit.seven', 'planet-8-hover', 'planet-8-click', 'zoom_outer');
     setupPlanetEvents('.orbit.eight', 'planet-9-hover', 'planet-9-click', 'zoom_outer');
     
+    // No longer emptying inner planets when inspecting in outer zoom
     $(".nav_inspect").click(function() {
-      $('.zoom_outer .inner_planets').empty();
+      // Empty call removed to prevent planets from unloading
     });
     
     return this;
