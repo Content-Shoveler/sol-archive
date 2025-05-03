@@ -24,7 +24,7 @@ body {
     -webkit-transform: translateY(0); }
 
   50% {
-    -webkit-transform: translateY(1.5vh); }
+    -webkit-transform: translateY(calc(var(--vh, 1vh) * 1.5)); }
 
   100% {
     -webkit-transform: translateY(0); } }
@@ -34,7 +34,7 @@ body {
     -webkit-transform: translateY(0); }
 
   50% {
-    -webkit-transform: translateY(-1vh); }
+    -webkit-transform: translateY(calc(var(--vh, 1vh) * -1)); }
 
   100% {
     -webkit-transform: translateY(0); } }
@@ -52,8 +52,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 10vh;
-  height: 10vh;
+  width: calc(var(--vh, 1vh) * 10);
+  height: calc(var(--vh, 1vh) * 10);
   background: yellow;
   border-radius: 100%;
   transform: translate(-50%, -50%);
@@ -62,8 +62,8 @@ body {
   .sun:hover {
     transform: translate(-50%, -50%) scale(1.5); }
   .sun .corona {
-    width: 10vh;
-    height: 11vh;
+    width: calc(var(--vh, 1vh) * 10);
+    height: calc(var(--vh, 1vh) * 11);
     background: rgba(255, 255, 0, 0.3);
     border-radius: 100%;
     -webkit-transition-property: -webkit-transform;
@@ -73,7 +73,7 @@ body {
     -webkit-transition-duration: 2s;
     -webkit-animation-duration: 2s;
     position: absolute;
-    margin-top: -0.5vh; }
+    margin-top: calc(var(--vh, 1vh) * -0.5); }
     .sun .corona.two {
       -webkit-animation-delay: 0.5s; }
     .sun .corona.three {
@@ -133,7 +133,7 @@ body {
   .orbit.one .planet {
     width: 10px;
     height: 10px;
-    top: 11vh;
+    top: calc(var(--vh, 1vh) * 11);
     background-color: darkorange; }
     .orbit.one .planet::after {
       -webkit-transition-duration: 2s;
@@ -154,7 +154,7 @@ body {
   .orbit.two .planet {
     width: 25px;
     height: 25px;
-    top: 20vh;
+    top: calc(var(--vh, 1vh) * 20);
     background-color: white; }
     .orbit.two .planet::after {
       -webkit-transition-duration: 3s;
@@ -176,7 +176,7 @@ body {
   .orbit.three .planet {
     width: 30px;
     height: 30px;
-    top: 28.75vh;
+    top: calc(var(--vh, 1vh) * 28.75);
     background-color: darkcyan; }
     .orbit.three .planet::after {
       -webkit-transition-duration: 0.3s;
@@ -197,7 +197,7 @@ body {
   .orbit.four .planet {
     width: 16px;
     height: 16px;
-    top: 37.5vh;
+    top: calc(var(--vh, 1vh) * 37.5);
     background-color: red; }
     .orbit.four .planet::after {
       -webkit-transition-duration: 0.3s;
@@ -218,10 +218,10 @@ body {
   .orbit.five .planet {
     width: 60px;
     height: 60px;
-    top: 17.5vh;
+    top: calc(var(--vh, 1vh) * 17.5);
     background-color: lightcoral;
-    max-width: 10vh;
-    max-height: 10vh; }
+    max-width: calc(var(--vh, 1vh) * 10);
+    max-height: calc(var(--vh, 1vh) * 10); }
     .orbit.five .planet::after {
       -webkit-transition-duration: 0.3s;
       -webkit-animation-duration: 0.3s;
@@ -230,7 +230,7 @@ body {
 .orbit.six {
   transform: rotate(55deg);
   left: calc(50vw - 27.5vh);
-  top: calc(50vh - 27.5vh);
+  top: calc(var(--vh, 1vh) * 50 - 27.5vh);
   width: 55vh;
   height: 55vh;
   border-color: lightgoldenrodyellow;
@@ -241,10 +241,10 @@ body {
   .orbit.six .planet {
     width: 48px;
     height: 48px;
-    top: 27.5vh;
+    top: calc(var(--vh, 1vh) * 27.5);
     background-color: lightgoldenrodyellow;
-    max-width: 8vh;
-    max-height: 8vh; }
+    max-width: calc(var(--vh, 1vh) * 8);
+    max-height: calc(var(--vh, 1vh) * 8); }
     .orbit.six .planet::after {
       -webkit-transition-duration: 0.3s;
       -webkit-animation-duration: 0.3s;
@@ -253,7 +253,7 @@ body {
 .orbit.seven {
   transform: rotate(45deg);
   left: calc(50vw - 37.5vh);
-  top: calc(50vh - 37.5vh);
+  top: calc(var(--vh, 1vh) * 50 - 37.5vh);
   width: 75vh;
   height: 75vh;
   border-color: lightblue;
@@ -264,10 +264,10 @@ body {
   .orbit.seven .planet {
     width: 22px;
     height: 22px;
-    top: 37.5vh;
+    top: calc(var(--vh, 1vh) * 37.5);
     background-color: lightblue;
-    max-width: 3.7vh;
-    max-height: 3.7vh; }
+    max-width: calc(var(--vh, 1vh) * 3.7);
+    max-height: calc(var(--vh, 1vh) * 3.7); }
     .orbit.seven .planet::after {
       -webkit-transition-duration: 0.3s;
       -webkit-animation-duration: 0.3s;
@@ -276,7 +276,7 @@ body {
 .orbit.eight {
   transform: rotate(165deg);
   left: calc(50vw - 47.5vh);
-  top: calc(50vh - 47.5vh);
+  top: calc(var(--vh, 1vh) * 50 - 47.5vh);
   width: 95vh;
   height: 95vh;
   border-color: cornflowerblue;
@@ -287,10 +287,10 @@ body {
   .orbit.eight .planet {
     width: 21px;
     height: 21px;
-    top: 47.5vh;
+    top: calc(var(--vh, 1vh) * 47.5);
     background-color: cornflowerblue;
-    max-width: 3.5vh;
-    max-height: 3.5vh; }
+    max-width: calc(var(--vh, 1vh) * 3.5);
+    max-height: calc(var(--vh, 1vh) * 3.5); }
     .orbit.eight .planet::after {
       -webkit-transition-duration: 0.3s;
       -webkit-animation-duration: 0.3s;
@@ -305,9 +305,9 @@ body {
   border-width: 0;
   z-index: 96; }
   .orbit.belt .cloud {
-    border: 3vh solid rgba(128, 128, 128, 0.06);
-    height: calc(97% - 6vh);
-    width: calc(100% - 6vh);
+    border: calc(var(--vh, 1vh) * 3) solid rgba(128, 128, 128, 0.06);
+    height: calc(97% - calc(var(--vh, 1vh) * 6));
+    width: calc(100% - calc(var(--vh, 1vh) * 6));
     top: 2.5%;
     position: absolute;
     border-radius: 100%;
@@ -319,9 +319,9 @@ body {
     -webkit-animation-duration: 5s;
     transition: 2s; }
     .orbit.belt .cloud.one {
-      border: 2vh solid rgba(128, 128, 128, 0.06);
-      height: calc(97% - 4vh);
-      width: calc(100% - 4vh); }
+      border: calc(var(--vh, 1vh) * 2) solid rgba(128, 128, 128, 0.06);
+      height: calc(97% - calc(var(--vh, 1vh) * 4));
+      width: calc(100% - calc(var(--vh, 1vh) * 4)); }
     .orbit.belt .cloud.two {
       -webkit-animation-delay: 1s; }
     .orbit.belt .cloud.three {
@@ -340,9 +340,9 @@ body {
   top: 0;
   left: 0;
   width: calc(50vw - 45vh);
-  height: 100vh; }
+  height: calc(var(--vh, 1vh) * 100); }
   .name-hold > div > div {
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     transition: 0.3s;
     position: absolute;
     width: calc(50vw - 45vh); }
@@ -350,7 +350,7 @@ body {
     color: #fff;
     text-transform: uppercase;
     font-family: 'Open Sans', sans-serif;
-    font-size: 5vh;
+    font-size: calc(var(--vh, 1vh) * 5);
     font-weight: 600;
     height: 0;
     overflow: hidden;
@@ -369,14 +369,14 @@ body {
   .name-hold .name p {
     top: calc(50% - 75px); } }
   .name-hold .name-hold-moons .name {
-    font-size: 4vh;
+    font-size: calc(var(--vh, 1vh) * 4);
     text-transform: unset; }
     @media (max-width: 999px) {
 .planet-inspect .name-hold .name p {
 top: 50%; } }
 
 .moon-hover .name-hold-inner > div, .moon-hover .name-hold-outer > div, .moon-hover .name-hold-objects > div {
-  height: 150vh;
+  height: calc(var(--vh, 1vh) * 150);
   transform: scale(0); }
 
 .planet-0-hover .name.zero, .planet-0-click .sol .name.zero, .planet-1-hover .name.one, .planet-1-click .sol .name.one, .planet-2-hover .name.two, .planet-2-click .sol .name.two, .planet-3-hover .name.three, .planet-3-click .sol .name.three, .planet-4-hover .name.four, .planet-4-click .sol .name.four, .planet-5-hover .name.five, .planet-5-click .sol .name.five, .planet-6-hover .name.six, .planet-6-click .sol .name.six, .planet-7-hover .name.seven, .planet-7-click .sol .name.seven, .planet-8-hover .name.eight, .planet-8-click .sol .name.eight, .planet-9-hover .name.nine, .planet-9-click .sol .name.nine, .moon-1-hover .sol .name.m-one, .moon-2-hover .sol .name.m-two, .moon-3-hover .sol .name.m-three, .moon-4-hover .sol .name.m-four, .moon-5-hover .sol .name.m-five, .moon-6-hover .sol .name.m-six, .moon-7-hover .sol .name.m-seven, .moon-8-hover .sol .name.m-eight {
@@ -395,7 +395,7 @@ top: 50%; } }
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   width: calc(50vw - 45vh);
-  font-size: 2.5vh; }
+  font-size: calc(var(--vh, 1vh) * 2.5); }
   .info-hold .info {
     position: absolute;
     top: 50%;
@@ -406,12 +406,12 @@ top: 50%; } }
     padding: 0 2vw;
     transition: 0.5s; }
     .info-hold .info h1 {
-      font-size: 2.5vh;
-      margin: 4vh 0 0 0; }
+      font-size: calc(var(--vh, 1vh) * 2.5);
+      margin: calc(var(--vh, 1vh) * 4) 0 0 0; }
     .info-hold .info h1:first-child {
       margin: 0; }
     .info-hold .info p {
-      font-size: 2vh;
+      font-size: calc(var(--vh, 1vh) * 2);
       padding: 0 1vw; }
     .info-hold .info p:last-child {
       margin-bottom: 0; }
@@ -427,13 +427,13 @@ top: 50%; } }
   .buttons i {
     background: rgba(255, 255, 255, 0.4);
     color: #000;
-    height: 5vh;
-    width: 5vh;
+    height: calc(var(--vh, 1vh) * 5);
+    width: calc(var(--vh, 1vh) * 5);
     border-radius: 100%;
     text-align: center;
-    line-height: 5vh;
-    margin: 0 0.5vh;
-    font-size: 2vh;
+    line-height: calc(var(--vh, 1vh) * 5);
+    margin: 0 calc(var(--vh, 1vh) * 0.5);
+    font-size: calc(var(--vh, 1vh) * 2);
     transition: 0.3s;
     cursor: pointer; }
     .buttons i:hover {
@@ -450,7 +450,7 @@ top: 50%; } }
   overflow: hidden;
   transition-delay: 0.3s;
   font-family: 'Open Sans', sans-serif;
-  font-size: 2.5vh; }
+  font-size: calc(var(--vh, 1vh) * 2.5); }
   .about .inner {
     height: 100%;
     top: 0;
@@ -468,11 +468,11 @@ top: 50%; } }
       width: 90vw;
       padding: 0 5vw; }
   .about i {
-    width: 5vh;
-    height: 5vh;
-    line-height: calc(5vh - -1px);
-    border-radius: 5vh;
-    margin-top: 5vh;
+    width: calc(var(--vh, 1vh) * 5);
+    height: calc(var(--vh, 1vh) * 5);
+    line-height: calc(calc(var(--vh, 1vh) * 5) - -1px);
+    border-radius: calc(var(--vh, 1vh) * 5);
+    margin-top: calc(var(--vh, 1vh) * 5);
     border: 1px solid;
     transition: 0.3s; }
     .about i:hover {
@@ -482,7 +482,7 @@ top: 50%; } }
     text-decoration: none;
     color: inherit; }
   .about p {
-    margin: 5vh 0; }
+    margin: calc(var(--vh, 1vh) * 5) 0; }
 
 .about-open .about {
   height: 100%;
@@ -728,10 +728,10 @@ top: 50%; } }
     width: 22vh;
     height: 22vh;
     opacity: 1; }
-  .zoom_outer .orbit.belt .cloud, .zoom_farout .orbit.belt .cloud {
-    height: calc(97% - 2vh) !important;
-    width: calc(100% - 2vh) !important;
-    border: 1vh solid rgba(128, 128, 128, 0.05); }
+.zoom_outer .orbit.belt .cloud, .zoom_farout .orbit.belt .cloud {
+    height: calc(97% - calc(var(--vh, 1vh) * 2)) !important;
+    width: calc(100% - calc(var(--vh, 1vh) * 2)) !important;
+    border: calc(var(--vh, 1vh) * 1) solid rgba(128, 128, 128, 0.05); }
 
 .zoom_farout .sun {
   transform: translate(-50%, -50%) scale(0.2); }
@@ -775,10 +775,10 @@ top: 50%; } }
   display: block !important; }
   .planet-1-inspect .orbit.one .planet, .planet-2-inspect .orbit.two .planet, .planet-3-inspect .orbit.three .planet, .planet-4-inspect .orbit.four .planet, .planet-5-inspect .orbit.belt .planet, .planet-6-inspect .orbit.five .planet, .planet-7-inspect .orbit.six .planet, .planet-8-inspect .orbit.seven .planet, .planet-9-inspect .orbit.eight .planet {
     top: 0;
-    height: 18vh !important;
-    width: 18vh !important;
-    max-width: 18vh;
-    max-height: 18vh; }
+    height: calc(var(--vh, 1vh) * 18) !important;
+    width: calc(var(--vh, 1vh) * 18) !important;
+    max-width: calc(var(--vh, 1vh) * 18);
+    max-height: calc(var(--vh, 1vh) * 18); }
   .planet-1-inspect .orbit.one .planet::after, .planet-2-inspect .orbit.two .planet::after, .planet-3-inspect .orbit.three .planet::after, .planet-4-inspect .orbit.four .planet::after, .planet-5-inspect .orbit.belt .planet::after, .planet-6-inspect .orbit.five .planet::after, .planet-7-inspect .orbit.six .planet::after, .planet-8-inspect .orbit.seven .planet::after, .planet-9-inspect .orbit.eight .planet::after {
     display: none; }
   .planet-1-inspect .orbit.one .elip, .planet-2-inspect .orbit.two .elip, .planet-3-inspect .orbit.three .elip, .planet-4-inspect .orbit.four .elip, .planet-5-inspect .orbit.belt .elip, .planet-6-inspect .orbit.five .elip, .planet-7-inspect .orbit.six .elip, .planet-8-inspect .orbit.seven .elip, .planet-9-inspect .orbit.eight .elip {
@@ -788,33 +788,33 @@ top: 50%; } }
   z-index: -1; }
 
 .planet-1-inspect .orbit.one .planet {
-  background-image: radial-gradient(circle at 7vh 7vh, darkorange, #000); }
+  background-image: radial-gradient(circle at calc(var(--vh, 1vh) * 7) calc(var(--vh, 1vh) * 7), darkorange, #000); }
 
 .planet-2-inspect .orbit.two .planet {
-  background-image: radial-gradient(circle at 7vh 7vh, white, #000); }
+  background-image: radial-gradient(circle at calc(var(--vh, 1vh) * 7) calc(var(--vh, 1vh) * 7), white, #000); }
 
 .planet-3-inspect .orbit.three .planet {
-  background-image: radial-gradient(circle at 7vh 7vh, darkcyan, #000); }
+  background-image: radial-gradient(circle at calc(var(--vh, 1vh) * 7) calc(var(--vh, 1vh) * 7), darkcyan, #000); }
 
 .planet-4-inspect .orbit.four .planet {
-  background-image: radial-gradient(circle at 7vh 7vh, red, #000); }
+  background-image: radial-gradient(circle at calc(var(--vh, 1vh) * 7) calc(var(--vh, 1vh) * 7), red, #000); }
 
 .planet-6-inspect .orbit.five .planet {
-  background-image: radial-gradient(circle at 7vh 7vh, lightcoral, #000); }
+  background-image: radial-gradient(circle at calc(var(--vh, 1vh) * 7) calc(var(--vh, 1vh) * 7), lightcoral, #000); }
 
 .planet-7-inspect .orbit.six .planet {
-  background-image: radial-gradient(circle at 7vh 7vh, lightgoldenrodyellow, #000); }
+  background-image: radial-gradient(circle at calc(var(--vh, 1vh) * 7) calc(var(--vh, 1vh) * 7), lightgoldenrodyellow, #000); }
 
 .planet-8-inspect .orbit.seven .planet {
-  background-image: radial-gradient(circle at 7vh 7vh, lightblue, #000); }
+  background-image: radial-gradient(circle at calc(var(--vh, 1vh) * 7) calc(var(--vh, 1vh) * 7), lightblue, #000); }
 
 .planet-9-inspect .orbit.eight .planet {
-  background-image: radial-gradient(circle at 7vh 7vh, cornflowerblue, #000); }
+  background-image: radial-gradient(circle at calc(var(--vh, 1vh) * 7) calc(var(--vh, 1vh) * 7), cornflowerblue, #000); }
 
 #moons-planet-3 .orbit.moon-three {
   transform: rotate(0deg);
   left: calc(50vw - 30vh);
-  top: calc(50vh - 30vh);
+  top: calc(calc(var(--vh, 1vh) * 50) - 30vh);
   width: 60vh;
   height: 60vh;
   border-color: rgba(112, 128, 144, 0.4);
@@ -823,9 +823,9 @@ top: 50%; } }
     -webkit-transition-duration: 60s;
     -webkit-animation-duration: 60s; }
   #moons-planet-3 .orbit.moon-three .planet {
-    width: 4vh !important;
-    height: 4vh !important;
-    top: 30vh;
+    width: calc(var(--vh, 1vh) * 4) !important;
+    height: calc(var(--vh, 1vh) * 4) !important;
+    top: calc(var(--vh, 1vh) * 30);
     background: slategrey; }
   #moons-planet-3 .orbit.moon-three .planet::after {
     -webkit-transition-duration: 0s;
@@ -834,7 +834,7 @@ top: 50%; } }
     background: slategrey; }
   #moons-planet-3 .orbit.belt {
     left: calc(50vw - 15vh);
-    top: calc(50vh - 15vh);
+    top: calc(calc(var(--vh, 1vh) * 50) - 15vh);
     width: 30vh;
     height: 30vh;
     z-index: 100; }
@@ -850,7 +850,7 @@ top: 50%; } }
   #moons-planet-3 .orbit.sat_iss {
     transform: rotate(0deg);
     left: calc(50vw - 10vh);
-    top: calc(50vh - 10vh);
+    top: calc(calc(var(--vh, 1vh) * 50) - 10vh);
     width: 20vh;
     height: 20vh;
     border-color: rgba(255, 255, 255, 0.3);
@@ -859,9 +859,9 @@ top: 50%; } }
     -webkit-transition-duration: 0.5s;
     -webkit-animation-duration: 0.5s; }
   #moons-planet-3 .orbit.sat_iss .planet {
-    width: 1vh !important;
-    height: 1vh !important;
-    top: 10vh;
+    width: calc(var(--vh, 1vh) * 1) !important;
+    height: calc(var(--vh, 1vh) * 1) !important;
+    top: calc(var(--vh, 1vh) * 10);
     background: white; }
   #moons-planet-3 .orbit.sat_iss .planet::after {
     -webkit-transition-duration: 3s;
@@ -872,7 +872,7 @@ top: 50%; } }
 #moons-planet-4 .orbit.moon-one {
   transform: rotate(0deg);
   left: calc(50vw - 20vh);
-  top: calc(50vh - 20vh);
+  top: calc(calc(var(--vh, 1vh) * 50) - 20vh);
   width: 40vh;
   height: 40vh;
   border-color: rgba(112, 128, 144, 0.4);
@@ -881,9 +881,9 @@ top: 50%; } }
     -webkit-transition-duration: 3s;
     -webkit-animation-duration: 3s; }
   #moons-planet-4 .orbit.moon-one .planet {
-    width: 4vh !important;
-    height: 4vh !important;
-    top: 20vh;
+    width: calc(var(--vh, 1vh) * 4) !important;
+    height: calc(var(--vh, 1vh) * 4) !important;
+    top: calc(var(--vh, 1vh) * 20);
     background: slategrey; }
   #moons-planet-4 .orbit.moon-one .planet::after {
     -webkit-transition-duration: 0s;
@@ -893,7 +893,7 @@ top: 50%; } }
   #moons-planet-4 .orbit.moon-two {
     transform: rotate(0deg);
     left: calc(50vw - 27.5vh);
-    top: calc(50vh - 27.5vh);
+    top: calc(calc(var(--vh, 1vh) * 50) - 27.5vh);
     width: 55vh;
     height: 55vh;
     border-color: rgba(112, 128, 144, 0.4);
@@ -902,9 +902,9 @@ top: 50%; } }
     -webkit-transition-duration: 12s;
     -webkit-animation-duration: 12s; }
   #moons-planet-4 .orbit.moon-two .planet {
-    width: 4vh !important;
-    height: 4vh !important;
-    top: 27.5vh;
+    width: calc(var(--vh, 1vh) * 4) !important;
+    height: calc(var(--vh, 1vh) * 4) !important;
+    top: calc(var(--vh, 1vh) * 27.5);
     background: slategrey; }
   #moons-planet-4 .orbit.moon-two .planet::after {
     -webkit-transition-duration: 0s;
@@ -915,7 +915,7 @@ top: 50%; } }
 #moons-planet-5 .orbit.moon-one {
   transform: rotate(0deg);
   left: calc(50vw - 15vh);
-  top: calc(50vh - 15vh);
+  top: calc(calc(var(--vh, 1vh) * 50) - 15vh);
   width: 30vh;
   height: 30vh;
   border-color: rgba(112, 128, 144, 0.4);
@@ -924,9 +924,9 @@ top: 50%; } }
     -webkit-transition-duration: 3s;
     -webkit-animation-duration: 3s; }
   #moons-planet-5 .orbit.moon-one .planet {
-    width: 3vh !important;
-    height: 3vh !important;
-    top: 15vh;
+    width: calc(var(--vh, 1vh) * 3) !important;
+    height: calc(var(--vh, 1vh) * 3) !important;
+    top: calc(var(--vh, 1vh) * 15);
     background: slategrey; }
   #moons-planet-5 .orbit.moon-one .planet::after {
     -webkit-transition-duration: 0s;
@@ -936,7 +936,7 @@ top: 50%; } }
   #moons-planet-5 .orbit.moon-two {
     transform: rotate(0deg);
     left: calc(50vw - 20vh);
-    top: calc(50vh - 20vh);
+    top: calc(calc(var(--vh, 1vh) * 50) - 20vh);
     width: 40vh;
     height: 40vh;
     border-color: rgba(112, 128, 144, 0.4);
