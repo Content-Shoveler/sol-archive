@@ -3,10 +3,6 @@ import { initializePlanets, initializeMoons, initializeInfo } from './solar-data
 
 // Single document ready function that contains all initialization
 jQuery(document).ready(function($) {
-  // Info Button
-  $('.buttons .fa-info').click(function(){
-    $('body').addClass('about-open');
-  });
 
   // Helper function to setup planet hover and click events
   function setupPlanetEvents(selector, hoverClass, clickClass, zoomClass) {
