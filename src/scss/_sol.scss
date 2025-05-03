@@ -1,6 +1,6 @@
 @charset "utf-8";
 body {
-  height: calc(100vh + 200px);
+  height: calc(var(--vh, 1vh) * 100 + 200px);
   margin: 0; }
   body::-webkit-scrollbar {
     display: none; }
@@ -41,7 +41,7 @@ body {
 
 .sol {
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   position: fixed;
   top: 0;
   left: 0;
@@ -421,7 +421,7 @@ top: 50%; } }
 
 .buttons {
   position: absolute;
-  bottom: 2vh;
+  bottom: calc(var(--vh, 1vh) * 2);
   left: 2vh;
   z-index: 200; }
   .buttons i {
@@ -493,7 +493,7 @@ top: 50%; } }
 .nav {
   position: absolute;
   left: 2vh;
-  bottom: 2vh;
+  bottom: calc(var(--vh, 1vh) * 2);
   color: #fff;
   background: rgba(255, 255, 255, 0.1);
   padding: 10px 10px 0;
@@ -503,6 +503,11 @@ top: 50%; } }
   width: 150px;
   z-index: 2000;
   transition: 0.3s; }
+  @media (max-height: 600px) {
+    .nav {
+      bottom: calc(var(--vh, 1vh) * 4); /* Increase bottom distance on very small heights */
+    }
+  }
   .nav .nav_directs {
     display: inline-block;
     width: 100%;
@@ -610,7 +615,7 @@ top: 50%; } }
   display: block; }
 
 .planet-inspect .nav {
-  bottom: -30px !important;
+  bottom: calc(var(--vh, 1vh) * -3) !important;
   height: 80px;
   width: 120px; }
   .planet-inspect .nav .nav_selects {
@@ -746,9 +751,9 @@ top: 50%; } }
   .planet-1-click .nav_selects, .planet-2-click .nav_selects, .planet-3-click .nav_selects, .planet-4-click .nav_selects, .planet-5-click .nav_selects, .planet-6-click .nav_selects, .planet-7-click .nav_selects, .planet-8-click .nav_selects, .planet-9-click .nav_selects, .planet-1-click .nav_arrows, .planet-2-click .nav_arrows, .planet-3-click .nav_arrows, .planet-4-click .nav_arrows, .planet-5-click .nav_arrows, .planet-6-click .nav_arrows, .planet-7-click .nav_arrows, .planet-8-click .nav_arrows, .planet-9-click .nav_arrows {
     opacity: 1;
     z-index: 1; }
-  .planet-1-click .nav, .planet-2-click .nav, .planet-3-click .nav, .planet-4-click .nav, .planet-5-click .nav, .planet-6-click .nav, .planet-7-click .nav, .planet-8-click .nav, .planet-9-click .nav {
+.planet-1-click .nav, .planet-2-click .nav, .planet-3-click .nav, .planet-4-click .nav, .planet-5-click .nav, .planet-6-click .nav, .planet-7-click .nav, .planet-8-click .nav, .planet-9-click .nav {
     transform: rotate(90deg);
-    bottom: calc(2vh + 10px); }
+    bottom: calc(var(--vh, 1vh) * 2 + 10px); }
   .planet-1-click .nav .nav_arrow_orbit1, .planet-2-click .nav .nav_arrow_orbit2, .planet-3-click .nav .nav_arrow_orbit3, .planet-4-click .nav .nav_arrow_orbit4, .planet-5-click .nav .nav_arrow_orbit5, .planet-6-click .nav .nav_arrow_orbit6, .planet-7-click .nav .nav_arrow_orbit7, .planet-8-click .nav .nav_arrow_orbit8, .planet-9-click .nav .nav_arrow_orbit9 {
     display: block; }
 
@@ -1317,4 +1322,4 @@ top: 50%; } }
   opacity: 1 !important; }
 
 .skew {
-  height: 100vh; }
+  height: calc(var(--vh, 1vh) * 100); }
